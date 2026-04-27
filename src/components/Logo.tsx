@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 type LogoSize = 'sm' | 'md' | 'lg' | 'xl'
 
 type LogoProps = {
@@ -6,8 +8,10 @@ type LogoProps = {
 }
 
 const Logo = ({ size = 'md', className = '' }: LogoProps) => {
+  const [src, setSrc] = useState('/gmx-labs-logo.jpg')
+
   const sizeMap: Record<LogoSize, number> = {
-    sm: 36,
+    sm: 40,
     md: 52,
     lg: 76,
     xl: 108,
@@ -17,12 +21,13 @@ const Logo = ({ size = 'md', className = '' }: LogoProps) => {
 
   return (
     <img
-      src="/LuxChain Logo.jpg"
+      src={src}
       alt="GMX Labs logo"
       width={pixelSize}
       height={pixelSize}
       className={className}
-      style={{ borderRadius: '999px', objectFit: 'cover' }}
+      onError={() => setSrc('/LuxChain Logo.jpg')}
+      style={{ borderRadius: '10px', objectFit: 'cover' }}
     />
   )
 }
