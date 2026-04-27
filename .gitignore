@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local design source assets
+Futuristic LuxChain Mobile Interface.png
+GMX-logo.jpg
+LuxChain Logo.jpg
