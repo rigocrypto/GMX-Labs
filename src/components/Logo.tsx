@@ -10,8 +10,8 @@ type LogoProps = {
 const Logo = ({ size = 'md', className = '' }: LogoProps) => {
   const base = import.meta.env.BASE_URL
   const logoCandidates = [
-    `${base}public/GMX-logo.jpg`,
-    `${base}public/LuxChain Logo.jpg`,
+    `${base}GMX-logo.jpg`,
+    `${base}favicon.svg`,
   ]
   const [logoIndex, setLogoIndex] = useState(0)
 
