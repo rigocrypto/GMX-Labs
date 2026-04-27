@@ -52,6 +52,7 @@ html {
   border-radius: 0.78rem;
   border: 1px solid var(--line);
   background: rgba(3, 8, 27, 0.9);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 
@@ -227,7 +228,7 @@ html {
 }
 
 .hero-video-wrap {
-  margin-top: 0.72rem;
+  margin-top: 1rem;
   border-radius: 0.72rem;
   border: 1px solid rgba(112, 137, 255, 0.28);
   background: rgba(7, 13, 42, 0.66);
@@ -242,6 +243,20 @@ html {
   height: auto;
   max-height: 320px;
   object-fit: cover;
+}
+
+.hero-brand-note {
+  margin: 0.58rem 0 0;
+  color: #c9d5ff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.hero-disclaimer {
+  margin: 0.72rem 0 0;
+  color: #9fb1e8;
+  font-size: 0.78rem;
 }
 
 h1,
@@ -358,6 +373,7 @@ h1 {
   font-size: 1.27rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
   transform: perspective(800px) rotateX(11deg);
   animation: floaty 6.4s ease-in-out infinite;
@@ -389,6 +405,15 @@ h1 {
   animation-delay: -2.8s;
 }
 
+.stack-blockchain {
+  top: 70%;
+  left: 10%;
+  border-color: rgba(118, 133, 255, 0.72);
+  background: radial-gradient(circle at 24% 9%, rgba(92, 117, 255, 0.32), rgba(15, 23, 70, 0.78));
+  box-shadow: 0 0 28px rgba(86, 108, 255, 0.44);
+  animation-delay: -3.6s;
+}
+
 .section,
 .cta-section {
   padding: clamp(1.2rem, 2.7vw, 1.84rem);
@@ -405,6 +430,28 @@ h1 {
 .pill-row,
 .portfolio-grid {
   margin-top: 0.88rem;
+}
+
+.stack-grid {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.stack-category {
+  border: 1px solid rgba(112, 137, 255, 0.2);
+  border-radius: 0.72rem;
+  background: rgba(8, 14, 43, 0.64);
+  padding: 0.82rem;
+}
+
+.stack-category ul {
+  margin: 0.48rem 0 0;
+  padding-left: 1rem;
+  color: #cdd8ff;
+  display: grid;
+  gap: 0.28rem;
 }
 
 .services-grid {
@@ -654,6 +701,16 @@ h1 {
   padding: 0.9rem;
 }
 
+.portfolio-meta {
+  margin: 0.44rem 0 0;
+  font-size: 0.85rem;
+  color: #c8d4ff;
+}
+
+.portfolio-meta strong {
+  color: #ecf1ff;
+}
+
 .faq-grid {
   margin-top: 0.9rem;
   display: grid;
@@ -717,6 +774,12 @@ h1 {
   color: #c7d6ff;
 }
 
+.footer-disclaimer {
+  margin: 0.5rem 0 0;
+  font-size: 0.76rem;
+  color: #94a8e8;
+}
+
 .reveal {
   animation: reveal 560ms ease both;
 }
@@ -767,7 +830,8 @@ h1 {
 
   .services-grid,
   .why-grid,
-  .portfolio-grid {
+  .portfolio-grid,
+  .stack-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -788,6 +852,7 @@ h1 {
   .services-grid,
   .why-grid,
   .portfolio-grid,
+  .stack-grid,
   .process-row,
   .pill-row,
   .cta-stats,
@@ -817,6 +882,11 @@ h1 {
 
   .stack-ai {
     left: 30%;
+  }
+
+  .stack-blockchain {
+    top: 72%;
+    left: 6%;
   }
 
   .gmx-nav {

@@ -42,6 +42,8 @@ type WhyItem = {
 type PortfolioItem = {
   title: string
   text: string
+  stack: string
+  impact: string
 }
 
 type FaqItem = {
@@ -54,9 +56,16 @@ type StatItem = {
   label: string
 }
 
+type TechCategory = {
+  label: string
+  items: string[]
+}
+
 type Translation = {
   brand: {
     label: string
+    tagline: string
+    disclaimer: string
     homeAriaLabel: string
   }
   nav: {
@@ -101,6 +110,11 @@ type Translation = {
     titleAccent: string
     items: WhyItem[]
   }
+  tech: {
+    eyebrow: string
+    title: string
+    categories: TechCategory[]
+  }
   industries: {
     eyebrow: string
     title: string
@@ -110,6 +124,8 @@ type Translation = {
   portfolio: {
     eyebrow: string
     title: string
+    stackLabel: string
+    impactLabel: string
     items: PortfolioItem[]
   }
   faq: {
@@ -143,6 +159,8 @@ export const translations: Record<Language, Translation> = {
   en: {
     brand: {
       label: 'GMX LABS',
+      tagline: 'Independent Web3 and AI Development Studio',
+      disclaimer: 'Independent development studio. Not affiliated with GMX Protocol.',
       homeAriaLabel: 'GMX Labs home',
     },
     nav: {
@@ -158,192 +176,167 @@ export const translations: Record<Language, Translation> = {
       languageSwitcherLabel: 'Select language',
     },
     hero: {
-      eyebrow: 'Build. Innovate. Scale.',
-      titleLead: 'Digital Solutions for Web2,',
-      titleAccent: 'Web3 and AI',
-      description:
-        'We deliver Web3 development, DeFi development, smart contract development, blockchain integration services, and AI automation solutions that drive measurable business growth.',
+      eyebrow: 'Web3 + AI Engineering',
+      titleLead: 'We build secure Web3 and',
+      titleAccent: 'AI-powered applications.',
+      description: 'From architecture to deployment, we design, build, and audit production-ready systems engineered to scale.',
       trustAriaLabel: 'Trust points',
-      trustPoints: ['Modern Technologies', 'Scalable Architecture', 'Security First'],
-      primaryCta: 'Explore Solutions',
-      secondaryCta: 'Book Strategy Call',
-      stackCards: ['Web2', 'Web3', 'AI'],
+      trustPoints: ['Security-first delivery', 'Audit-ready architecture', 'Production-focused execution'],
+      primaryCta: 'Book Strategy Call',
+      secondaryCta: 'Get Technical Assessment',
+      stackCards: ['Web2', 'Web3', 'AI', 'Blockchain'],
     },
     services: {
-      eyebrow: 'What We Do',
-      title: 'Our Services',
-      subtitle:
-        'End-to-end crypto product development across Web2, Web3, smart contracts, DeFi platforms, blockchain solutions, and AI automation.',
+      eyebrow: 'Core Capabilities',
+      title: 'What We Build',
+      subtitle: 'Specialized engineering for teams building in Web3 and AI, with full-stack product execution.',
       learnMoreAriaPrefix: 'Learn more about',
       items: [
         {
-          accent: 'service-card-blue',
-          icon: 'W',
-          title: 'Web2 Development',
-          description: 'Robust, scalable, and secure web applications tailored to your business goals.',
-          points: ['Custom Web Applications', 'SaaS Platforms', 'APIs and Integrations', 'Cloud and DevOps'],
-          ctaLabel: 'Get Scope',
-        },
-        {
           accent: 'service-card-purple',
           icon: 'B',
-          title: 'Web3 and Blockchain',
-          description:
-            'Decentralized solutions and blockchain integrations for the next generation of internet products.',
+          title: 'Web3 and Smart Contract Engineering',
+          description: 'Secure protocol architecture and smart contract systems prepared for audits and production usage.',
           points: [
-            'dApps Development',
-            'Smart Contracts',
-            'DeFi Solutions',
-            'NFT and Tokenization',
-            'Wallet and dApp Integration',
+            'Secure smart contracts with audit-ready architecture',
+            'DeFi protocols for trading, staking, and liquidity systems',
+            'Token systems and on-chain governance mechanics',
+            'Wallet and dApp integration',
+            'Cross-chain interoperability design',
           ],
-          ctaLabel: 'Get Scope',
+          ctaLabel: 'Get Technical Scope',
         },
         {
           accent: 'service-card-cyan',
           icon: 'A',
-          title: 'AI and Automation',
-          description: 'Intelligent systems that automate workflows, extract insights, and accelerate growth.',
+          title: 'AI Systems and Automation',
+          description: 'Applied AI systems that automate operations, improve decision quality, and reduce manual overhead.',
           points: [
-            'AI-Powered Applications',
-            'Machine Learning Models',
-            'Chatbots and NLP',
-            'Data Analytics and Insights',
-            'Automation and Workflows',
+            'AI agents that automate operations and reduce costs',
+            'Custom ML models for prediction and analysis',
+            'Intelligent chatbots and NLP systems',
+            'Data pipelines and analytics dashboards',
+            'Workflow automation designed to scale',
           ],
-          ctaLabel: 'Get Scope',
+          ctaLabel: 'Get Technical Scope',
+        },
+        {
+          accent: 'service-card-blue',
+          icon: 'W',
+          title: 'Full-Stack Product Development',
+          description: 'Production-grade applications and infrastructure to support demanding product roadmaps.',
+          points: [
+            'Production-grade web applications and dashboards',
+            'API architecture and third-party integrations',
+            'SaaS platforms and internal tooling',
+            'Cloud infrastructure and DevOps delivery',
+          ],
+          ctaLabel: 'Get Technical Scope',
         },
       ],
     },
     process: {
       eyebrow: 'Our Process',
       title: 'How We Work',
-      subtitle: 'A proven process to turn your ideas into powerful digital products.',
+      subtitle: 'A structured path from idea to deployment with security and execution discipline.',
       steps: [
-        {
-          number: '1.',
-          icon: '💡',
-          title: 'Discover',
-          text: 'We understand your goals, audience, and product context.',
-        },
-        {
-          number: '2.',
-          icon: '✍️',
-          title: 'Plan',
-          text: 'We define architecture, milestones, and a practical roadmap.',
-        },
-        {
-          number: '3.',
-          icon: '</>',
-          title: 'Build',
-          text: 'We develop, test, and integrate with performance and quality in mind.',
-        },
-        {
-          number: '4.',
-          icon: '🚀',
-          title: 'Launch',
-          text: 'We deploy your solution and ensure a stable go-live experience.',
-        },
-        {
-          number: '5.',
-          icon: '📈',
-          title: 'Grow',
-          text: 'We optimize, iterate, and support your long-term product growth.',
-        },
+        { number: '1.', icon: '💡', title: 'Discover', text: 'We analyze goals, technical requirements, and market context.' },
+        { number: '2.', icon: '✍️', title: 'Plan', text: 'We define architecture, security model, and delivery roadmap.' },
+        { number: '3.', icon: '</>', title: 'Build', text: 'We develop, test, and integrate with engineering precision.' },
+        { number: '4.', icon: '🚀', title: 'Launch', text: 'We deploy your solution and ensure a clean go-live.' },
+        { number: '5.', icon: '📈', title: 'Grow', text: 'We optimize, scale, and support continuous product growth.' },
       ],
     },
     why: {
-      eyebrow: 'Why Choose Us',
-      titleLead: 'Why Clients Choose',
-      titleAccent: 'GMX Labs',
+      eyebrow: 'Why GMX Labs',
+      titleLead: 'Built for serious',
+      titleAccent: 'Web3 delivery',
       items: [
-        {
-          icon: '🛡️',
-          title: 'Expert Team',
-          text: 'Skilled engineers and architects with deep delivery experience.',
-        },
-        {
-          icon: '⚡',
-          title: 'Modern Stack',
-          text: 'Latest technologies to deliver resilient, future-ready products.',
-        },
-        {
-          icon: '🔒',
-          title: 'Secure by Design',
-          text: 'Security and performance are engineered into every layer.',
-        },
-        {
-          icon: '📊',
-          title: 'Results Driven',
-          text: 'Focused on measurable outcomes and long-term business value.',
-        },
+        { icon: '🧠', title: 'DeFi-native engineering', text: 'Built by engineers with hands-on smart contract and DeFi delivery experience.' },
+        { icon: '🛡️', title: 'Security-first mindset', text: 'We design like defenders and think like attackers from day one.' },
+        { icon: '🏗️', title: 'Production-ready systems', text: 'We ship maintainable systems, not fragile prototypes.' },
+        { icon: '⚡', title: 'Fast without compromise', text: 'Rapid execution with auditability and code quality preserved.' },
+      ],
+    },
+    tech: {
+      eyebrow: 'Technical Credibility',
+      title: 'Our Stack',
+      categories: [
+        { label: 'Smart Contracts', items: ['Solidity', 'Foundry', 'Hardhat'] },
+        { label: 'Blockchain', items: ['EVM', 'Arbitrum', 'Polygon', 'Solana'] },
+        { label: 'Backend', items: ['Node.js', 'TypeScript', 'Python'] },
+        { label: 'Frontend', items: ['React', 'Next.js', 'Vite'] },
+        { label: 'AI and ML', items: ['Python', 'TensorFlow', 'LangChain'] },
+        { label: 'Infrastructure', items: ['AWS', 'Vercel', 'Docker'] },
       ],
     },
     industries: {
       eyebrow: 'Industries We Serve',
       title: 'Who We Help',
-      items: ['Startups', 'Enterprises', 'Fintech', 'DeFi and Web3', 'E-commerce', 'AI and Data'],
-      note: 'From early-stage startups to global enterprises, we build solutions that scale.',
+      items: ['DeFi and Web3 Protocols', 'AI and Data Companies', 'Fintech Startups', 'SaaS Founders'],
+      note: 'Focused support for teams where technical execution directly drives business outcomes.',
     },
     portfolio: {
       eyebrow: 'Featured Work',
       title: 'Portfolio Highlights',
+      stackLabel: 'Stack:',
+      impactLabel: 'Impact:',
       items: [
         {
-          title: 'DeFi Trading Intelligence',
-          text: 'Analytics dashboards and market intelligence workflows for DeFi protocol teams.',
+          title: 'DeFi Trading Intelligence Platform',
+          text: 'Real-time on-chain analytics pipelines supporting faster strategy decisions for protocol teams.',
+          stack: 'Solidity, Node.js, React, The Graph',
+          impact: 'Reduced decision latency by streaming DEX metrics in real time.',
         },
         {
-          title: 'Tokenized Asset Platform',
-          text: 'Smart contract architecture and secure blockchain integration for tokenized ecosystems.',
+          title: 'Tokenized Asset Infrastructure',
+          text: 'Smart contract architecture and backend services for compliant tokenized ecosystems.',
+          stack: 'Solidity, TypeScript, React, AWS',
+          impact: 'Accelerated launch readiness with secure contract lifecycle and monitoring.',
         },
         {
           title: 'AI Operations Engine',
-          text: 'AI automation pipelines for faster delivery and resilient crypto product operations.',
+          text: 'Agent-powered automation workflows for delivery, reporting, and operational support.',
+          stack: 'Python, LangChain, Node.js, Vercel',
+          impact: 'Lowered manual operational load and improved execution consistency.',
         },
       ],
     },
     faq: {
       eyebrow: 'DeFi and Web3 Development FAQs',
       title: 'Questions Founders Ask Before Building',
-      subtitle:
-        'Clear answers for teams planning Web3 app development, smart contract audits, and AI-enabled blockchain products.',
+      subtitle: 'Clear answers for teams planning Web3 apps, smart contract audits, and AI-enabled blockchain products.',
       items: [
         {
           question: 'What does a DeFi development agency do?',
-          answer:
-            'A DeFi development agency designs, builds, and deploys decentralized finance products such as trading platforms, staking systems, lending modules, and protocol dashboards.',
+          answer: 'A DeFi development agency designs, builds, and deploys decentralized finance products such as trading systems, staking modules, lending flows, and protocol dashboards.',
         },
         {
           question: 'How much does smart contract development cost?',
-          answer:
-            'Smart contract development cost depends on scope, chain complexity, and testing depth. Typical projects range from focused MVP contracts to full production-grade contract suites.',
+          answer: 'Cost depends on scope, chain complexity, and testing depth. Projects range from focused MVP contracts to full production-grade contract suites.',
         },
         {
           question: 'What is included in a smart contract audit?',
-          answer:
-            'Smart contract audit services usually include code review, threat modeling, vulnerability testing, exploit simulation, and a prioritized remediation report for your engineering team.',
+          answer: 'Typical scope includes code review, threat modeling, vulnerability testing, exploit simulation, and prioritized remediation guidance.',
         },
         {
           question: 'How long does it take to build a Web3 app?',
-          answer:
-            'A focused Web3 MVP can often launch in weeks, while larger dApp development programs require phased delivery across architecture, development, testing, and deployment.',
+          answer: 'A focused MVP can launch in weeks. Larger products require phased delivery across architecture, development, testing, and deployment.',
         },
         {
           question: 'Can you integrate AI into blockchain products?',
-          answer:
-            'Yes. We build AI automation solutions for on-chain analytics, risk monitoring, workflow automation, and intelligent product operations layered on blockchain systems.',
+          answer: 'Yes. We build AI layers for on-chain analytics, risk monitoring, workflow automation, and product operations.',
         },
       ],
     },
     cta: {
-      titleLead: 'Ready to build something',
-      titleAccent: 'amazing',
+      titleLead: 'Building in Web3 or',
+      titleAccent: 'AI',
       titleTail: '?',
-      description: 'Let\'s turn your idea into a high-impact digital product with a clear delivery roadmap.',
-      trust: 'Trusted by DeFi founders, fintech teams, and Web3 product builders.',
-      primaryCta: 'Start Your Project',
-      secondaryCta: 'Schedule Discovery Call',
+      description: 'Let us review your architecture and define a practical implementation plan.',
+      trust: 'Technical support for founders, CTOs, and product teams shipping high-stakes systems.',
+      primaryCta: 'Book Strategy Call',
+      secondaryCta: 'Get Project Estimate',
       statsAriaLabel: 'Company stats',
       stats: [
         { value: '50+', label: 'Projects Delivered' },
@@ -352,7 +345,7 @@ export const translations: Record<Language, Translation> = {
       ],
     },
     footer: {
-      description: 'Digital solutions across Web2, Web3, and AI.',
+      description: 'Specialized digital engineering for Web3 and AI products.',
       services: 'Services',
       process: 'Process',
       faq: 'FAQ',
@@ -363,6 +356,8 @@ export const translations: Record<Language, Translation> = {
   es: {
     brand: {
       label: 'GMX LABS',
+      tagline: 'Estudio independiente de desarrollo Web3 e IA',
+      disclaimer: 'Estudio de desarrollo independiente. Sin afiliacion con GMX Protocol.',
       homeAriaLabel: 'Inicio de GMX Labs',
     },
     nav: {
@@ -378,191 +373,152 @@ export const translations: Record<Language, Translation> = {
       languageSwitcherLabel: 'Seleccionar idioma',
     },
     hero: {
-      eyebrow: 'Construir. Innovar. Escalar.',
-      titleLead: 'Soluciones digitales para Web2,',
-      titleAccent: 'Web3 e IA',
-      description:
-        'Entregamos desarrollo Web3, soluciones DeFi, desarrollo de smart contracts, integraciones blockchain y automatizacion con IA que impulsan un crecimiento medible.',
+      eyebrow: 'Ingenieria Web3 + IA',
+      titleLead: 'Construimos aplicaciones seguras',
+      titleAccent: 'Web3 e IA para produccion.',
+      description: 'Desde arquitectura hasta despliegue, diseniamos, construimos y auditamos sistemas listos para escalar.',
       trustAriaLabel: 'Puntos de confianza',
-      trustPoints: ['Tecnologia moderna', 'Arquitectura escalable', 'Seguridad primero'],
-      primaryCta: 'Explorar soluciones',
-      secondaryCta: 'Reservar llamada',
-      stackCards: ['Web2', 'Web3', 'IA'],
+      trustPoints: ['Entrega orientada a seguridad', 'Arquitectura lista para auditoria', 'Ejecucion enfocada en produccion'],
+      primaryCta: 'Reservar llamada estrategica',
+      secondaryCta: 'Solicitar assessment tecnico',
+      stackCards: ['Web2', 'Web3', 'IA', 'Blockchain'],
     },
     services: {
-      eyebrow: 'Lo Que Hacemos',
-      title: 'Nuestros Servicios',
-      subtitle:
-        'Desarrollo integral de productos digitales en Web2, Web3, smart contracts, plataformas DeFi, soluciones blockchain y automatizacion con IA.',
+      eyebrow: 'Capacidades Core',
+      title: 'Lo Que Construimos',
+      subtitle: 'Ingenieria especializada para equipos que construyen en Web3 e IA.',
       learnMoreAriaPrefix: 'Conocer mas sobre',
       items: [
         {
-          accent: 'service-card-blue',
-          icon: 'W',
-          title: 'Desarrollo Web2',
-          description: 'Aplicaciones web robustas, escalables y seguras alineadas con tus objetivos de negocio.',
-          points: ['Aplicaciones web a medida', 'Plataformas SaaS', 'APIs e integraciones', 'Cloud y DevOps'],
-          ctaLabel: 'Solicitar alcance',
-        },
-        {
           accent: 'service-card-purple',
           icon: 'B',
-          title: 'Web3 y Blockchain',
-          description: 'Soluciones descentralizadas e integraciones blockchain para la nueva generacion de productos de internet.',
+          title: 'Ingenieria Web3 y Smart Contracts',
+          description: 'Arquitectura segura de protocolos y sistemas de contratos inteligentes listos para auditoria.',
           points: [
-            'Desarrollo de dApps',
-            'Smart Contracts',
-            'Soluciones DeFi',
-            'NFT y tokenizacion',
+            'Smart contracts seguros con arquitectura audit-ready',
+            'Protocolos DeFi para trading, staking y liquidez',
+            'Sistemas de tokens y gobernanza on-chain',
             'Integracion de wallets y dApps',
+            'Disenio de interoperabilidad cross-chain',
           ],
-          ctaLabel: 'Solicitar alcance',
+          ctaLabel: 'Definir alcance tecnico',
         },
         {
           accent: 'service-card-cyan',
           icon: 'A',
-          title: 'IA y Automatizacion',
-          description: 'Sistemas inteligentes que automatizan flujos, extraen insights y aceleran el crecimiento.',
+          title: 'Sistemas de IA y Automatizacion',
+          description: 'Sistemas de IA aplicados para automatizar operaciones y reducir costos.',
           points: [
-            'Aplicaciones impulsadas por IA',
-            'Modelos de machine learning',
-            'Chatbots y NLP',
-            'Analitica e insights',
-            'Automatizacion y workflows',
+            'Agentes de IA que automatizan operaciones',
+            'Modelos ML para prediccion y analisis',
+            'Chatbots inteligentes y NLP',
+            'Pipelines de datos y dashboards analiticos',
+            'Automatizacion de workflows a escala',
           ],
-          ctaLabel: 'Solicitar alcance',
+          ctaLabel: 'Definir alcance tecnico',
+        },
+        {
+          accent: 'service-card-blue',
+          icon: 'W',
+          title: 'Desarrollo Full-Stack de Producto',
+          description: 'Aplicaciones e infraestructura listas para produccion y roadmap exigente.',
+          points: [
+            'Aplicaciones web productivas y dashboards',
+            'Arquitectura de APIs e integraciones',
+            'Plataformas SaaS y tooling interno',
+            'Infraestructura cloud y entrega DevOps',
+          ],
+          ctaLabel: 'Definir alcance tecnico',
         },
       ],
     },
     process: {
       eyebrow: 'Nuestro Proceso',
       title: 'Como Trabajamos',
-      subtitle: 'Un proceso probado para convertir tus ideas en productos digitales potentes.',
+      subtitle: 'Ruta clara desde idea hasta despliegue con disciplina tecnica.',
       steps: [
-        {
-          number: '1.',
-          icon: '💡',
-          title: 'Descubrir',
-          text: 'Entendemos tus objetivos, tu audiencia y el contexto real del producto.',
-        },
-        {
-          number: '2.',
-          icon: '✍️',
-          title: 'Planificar',
-          text: 'Definimos arquitectura, hitos y una hoja de ruta realista.',
-        },
-        {
-          number: '3.',
-          icon: '</>',
-          title: 'Construir',
-          text: 'Desarrollamos, probamos e integramos con foco en rendimiento y calidad.',
-        },
-        {
-          number: '4.',
-          icon: '🚀',
-          title: 'Lanzar',
-          text: 'Desplegamos tu solucion y aseguramos una salida a produccion estable.',
-        },
-        {
-          number: '5.',
-          icon: '📈',
-          title: 'Escalar',
-          text: 'Optimizamos, iteramos y apoyamos el crecimiento de largo plazo.',
-        },
+        { number: '1.', icon: '💡', title: 'Descubrir', text: 'Analizamos objetivos, requerimientos tecnicos y contexto de negocio.' },
+        { number: '2.', icon: '✍️', title: 'Planificar', text: 'Definimos arquitectura, modelo de seguridad y roadmap de entrega.' },
+        { number: '3.', icon: '</>', title: 'Construir', text: 'Desarrollamos, probamos e integramos con precision.' },
+        { number: '4.', icon: '🚀', title: 'Lanzar', text: 'Desplegamos y aseguramos una salida limpia a produccion.' },
+        { number: '5.', icon: '📈', title: 'Escalar', text: 'Optimizamos, escalamos y acompanamos evolucion continua.' },
       ],
     },
     why: {
-      eyebrow: 'Por Que Elegirnos',
-      titleLead: 'Por Que Los Clientes Eligen',
-      titleAccent: 'GMX Labs',
+      eyebrow: 'Por Que GMX Labs',
+      titleLead: 'Especialistas en',
+      titleAccent: 'entrega Web3',
       items: [
-        {
-          icon: '🛡️',
-          title: 'Equipo experto',
-          text: 'Ingenieros y arquitectos con amplia experiencia real de entrega.',
-        },
-        {
-          icon: '⚡',
-          title: 'Stack moderno',
-          text: 'Tecnologias actuales para productos resilientes y preparados para el futuro.',
-        },
-        {
-          icon: '🔒',
-          title: 'Seguridad desde el diseno',
-          text: 'La seguridad y el rendimiento se construyen en cada capa.',
-        },
-        {
-          icon: '📊',
-          title: 'Orientados a resultados',
-          text: 'Enfocados en resultados medibles y valor de negocio duradero.',
-        },
+        { icon: '🧠', title: 'Ingenieria DeFi real', text: 'Equipo con experiencia real en smart contracts y sistemas DeFi.' },
+        { icon: '🛡️', title: 'Mentalidad security-first', text: 'Diseniamos como defensores y pensamos como atacantes.' },
+        { icon: '🏗️', title: 'Sistemas de produccion', text: 'Entregamos sistemas mantenibles, no prototipos fragiles.' },
+        { icon: '⚡', title: 'Rapidez con calidad', text: 'Ejecucion veloz sin sacrificar auditabilidad ni calidad de codigo.' },
+      ],
+    },
+    tech: {
+      eyebrow: 'Credibilidad Tecnica',
+      title: 'Nuestro Stack',
+      categories: [
+        { label: 'Smart Contracts', items: ['Solidity', 'Foundry', 'Hardhat'] },
+        { label: 'Blockchain', items: ['EVM', 'Arbitrum', 'Polygon', 'Solana'] },
+        { label: 'Backend', items: ['Node.js', 'TypeScript', 'Python'] },
+        { label: 'Frontend', items: ['React', 'Next.js', 'Vite'] },
+        { label: 'IA y ML', items: ['Python', 'TensorFlow', 'LangChain'] },
+        { label: 'Infraestructura', items: ['AWS', 'Vercel', 'Docker'] },
       ],
     },
     industries: {
       eyebrow: 'Industrias Que Atendemos',
       title: 'A Quien Ayudamos',
-      items: ['Startups', 'Empresas', 'Fintech', 'DeFi y Web3', 'E-commerce', 'IA y Datos'],
-      note: 'Desde startups tempranas hasta empresas globales, construimos soluciones listas para escalar.',
+      items: ['Protocolos DeFi y Web3', 'Empresas de IA y Datos', 'Startups Fintech', 'Fundadores SaaS'],
+      note: 'Nos enfocamos en verticales donde la ejecucion tecnica define el resultado de negocio.',
     },
     portfolio: {
       eyebrow: 'Trabajo Destacado',
-      title: 'Portafolio Destacado',
+      title: 'Portafolio Tecnico',
+      stackLabel: 'Stack:',
+      impactLabel: 'Impacto:',
       items: [
         {
-          title: 'Inteligencia para Trading DeFi',
-          text: 'Dashboards analiticos y flujos de inteligencia de mercado para equipos de protocolos DeFi.',
+          title: 'Plataforma de inteligencia DeFi',
+          text: 'Pipelines on-chain en tiempo real para decisiones de estrategia de trading.',
+          stack: 'Solidity, Node.js, React, The Graph',
+          impact: 'Redujo latencia de decision con datos DEX en tiempo real.',
         },
         {
-          title: 'Plataforma de activos tokenizados',
-          text: 'Arquitectura de smart contracts e integracion segura para ecosistemas tokenizados.',
+          title: 'Infraestructura de activos tokenizados',
+          text: 'Arquitectura de contratos y backend para ecosistemas tokenizados.',
+          stack: 'Solidity, TypeScript, React, AWS',
+          impact: 'Acelero readiness de lanzamiento con trazabilidad y seguridad.',
         },
         {
-          title: 'Motor operativo con IA',
-          text: 'Pipelines de automatizacion con IA para una operacion cripto mas rapida y resistente.',
+          title: 'Motor de operaciones con IA',
+          text: 'Automatizacion con agentes para operaciones y reporting tecnico.',
+          stack: 'Python, LangChain, Node.js, Vercel',
+          impact: 'Redujo carga manual y mejoro consistencia operativa.',
         },
       ],
     },
     faq: {
-      eyebrow: 'Preguntas Frecuentes DeFi y Web3',
-      title: 'Preguntas Que Los Fundadores Hacen Antes de Construir',
-      subtitle:
-        'Respuestas claras para equipos que planean desarrollo Web3, auditorias de smart contracts y productos blockchain con IA.',
+      eyebrow: 'FAQs DeFi y Web3',
+      title: 'Preguntas Antes de Construir',
+      subtitle: 'Respuestas claras para equipos que planean productos Web3 y auditorias de smart contracts.',
       items: [
-        {
-          question: 'Que hace una agencia de desarrollo DeFi?',
-          answer:
-            'Una agencia DeFi disena, construye y despliega productos financieros descentralizados como plataformas de trading, sistemas de staking, modulos de lending y dashboards de protocolos.',
-        },
-        {
-          question: 'Cuanto cuesta desarrollar smart contracts?',
-          answer:
-            'El costo depende del alcance, la complejidad de la cadena y la profundidad del testing. Los proyectos van desde MVPs enfocados hasta suites completas de contratos para produccion.',
-        },
-        {
-          question: 'Que incluye una auditoria de smart contracts?',
-          answer:
-            'Normalmente incluye revision de codigo, modelado de amenazas, pruebas de vulnerabilidades, simulacion de exploits y un reporte priorizado para tu equipo de ingenieria.',
-        },
-        {
-          question: 'Cuanto tarda construir una app Web3?',
-          answer:
-            'Un MVP Web3 enfocado puede lanzarse en semanas, mientras que programas mas grandes requieren entregas por fases en arquitectura, desarrollo, testing y despliegue.',
-        },
-        {
-          question: 'Pueden integrar IA en productos blockchain?',
-          answer:
-            'Si. Construimos automatizacion con IA para analitica on-chain, monitoreo de riesgo, automatizacion de workflows y operaciones inteligentes sobre sistemas blockchain.',
-        },
+        { question: 'Que hace una agencia DeFi?', answer: 'Disenia, construye y despliega productos financieros descentralizados como trading, staking, lending y dashboards de protocolo.' },
+        { question: 'Cuanto cuesta desarrollar smart contracts?', answer: 'Depende del alcance, complejidad de la red y profundidad de testing. Va desde MVPs hasta suites completas para produccion.' },
+        { question: 'Que incluye una auditoria de smart contracts?', answer: 'Revision de codigo, modelado de amenazas, pruebas de vulnerabilidades y plan priorizado de remediacion.' },
+        { question: 'Cuanto tarda una app Web3?', answer: 'Un MVP puede lanzarse en semanas. Productos mayores requieren fases de arquitectura, desarrollo, pruebas y despliegue.' },
+        { question: 'Pueden integrar IA en blockchain?', answer: 'Si. Implementamos IA para analitica on-chain, monitoreo de riesgo y automatizacion operativa.' },
       ],
     },
     cta: {
-      titleLead: 'Listo para construir algo',
-      titleAccent: 'increible',
+      titleLead: 'Construyendo en Web3 o',
+      titleAccent: 'IA',
       titleTail: '?',
-      description: 'Convirtamos tu idea en un producto digital de alto impacto con una hoja de ruta clara.',
-      trust: 'Con la confianza de fundadores DeFi, equipos fintech y builders Web3.',
-      primaryCta: 'Iniciar proyecto',
-      secondaryCta: 'Agendar discovery call',
+      description: 'Revisemos tu arquitectura y definamos un plan de implementacion claro.',
+      trust: 'Soporte tecnico para founders, CTOs y equipos de producto.',
+      primaryCta: 'Reservar llamada estrategica',
+      secondaryCta: 'Solicitar estimacion',
       statsAriaLabel: 'Metricas de la compania',
       stats: [
         { value: '50+', label: 'Proyectos entregados' },
@@ -571,7 +527,7 @@ export const translations: Record<Language, Translation> = {
       ],
     },
     footer: {
-      description: 'Soluciones digitales en Web2, Web3 e IA.',
+      description: 'Ingenieria digital especializada para productos Web3 e IA.',
       services: 'Servicios',
       process: 'Proceso',
       faq: 'FAQ',
@@ -582,6 +538,8 @@ export const translations: Record<Language, Translation> = {
   fr: {
     brand: {
       label: 'GMX LABS',
+      tagline: 'Studio independant de developpement Web3 et IA',
+      disclaimer: 'Studio independant. Sans affiliation avec GMX Protocol.',
       homeAriaLabel: 'Accueil GMX Labs',
     },
     nav: {
@@ -597,200 +555,161 @@ export const translations: Record<Language, Translation> = {
       languageSwitcherLabel: 'Choisir la langue',
     },
     hero: {
-      eyebrow: 'Construire. Innover. Evoluer.',
-      titleLead: 'Solutions numeriques pour le Web2,',
-      titleAccent: 'le Web3 et l IA',
-      description:
-        'Nous livrons des solutions Web3, DeFi, smart contracts, integrations blockchain et automatisation IA qui accelerent une croissance mesurable.',
+      eyebrow: 'Ingenierie Web3 + IA',
+      titleLead: 'Nous concevons des applications',
+      titleAccent: 'Web3 et IA securisees.',
+      description: 'De l architecture au deploiement, nous livrons des systemes prets pour la production et concus pour evoluer.',
       trustAriaLabel: 'Points de confiance',
-      trustPoints: ['Technologies modernes', 'Architecture evolutive', 'Securite avant tout'],
-      primaryCta: 'Explorer les solutions',
-      secondaryCta: 'Reserver un appel',
-      stackCards: ['Web2', 'Web3', 'IA'],
+      trustPoints: ['Livraison orientee securite', 'Architecture prete pour audit', 'Execution orientee production'],
+      primaryCta: 'Reserver un appel strategique',
+      secondaryCta: 'Demander un assessment technique',
+      stackCards: ['Web2', 'Web3', 'IA', 'Blockchain'],
     },
     services: {
-      eyebrow: 'Ce Que Nous Faisons',
-      title: 'Nos Services',
-      subtitle:
-        'Developpement produit de bout en bout pour le Web2, le Web3, les smart contracts, les plateformes DeFi, les solutions blockchain et l automatisation IA.',
+      eyebrow: 'Capacites Principales',
+      title: 'Ce Que Nous Construisons',
+      subtitle: 'Ingenierie specialisee pour les equipes qui construisent en Web3 et IA.',
       learnMoreAriaPrefix: 'En savoir plus sur',
       items: [
         {
-          accent: 'service-card-blue',
-          icon: 'W',
-          title: 'Developpement Web2',
-          description: 'Applications web robustes, evolutives et securisees alignees sur vos objectifs business.',
-          points: ['Applications web sur mesure', 'Plateformes SaaS', 'APIs et integrations', 'Cloud et DevOps'],
-          ctaLabel: 'Definir le scope',
-        },
-        {
           accent: 'service-card-purple',
           icon: 'B',
-          title: 'Web3 et Blockchain',
-          description: 'Solutions decentralisees et integrations blockchain pour la nouvelle generation de produits internet.',
+          title: 'Ingenierie Web3 et Smart Contracts',
+          description: 'Architecture de protocoles securises et systemes de smart contracts prets pour audit.',
           points: [
-            'Developpement de dApps',
-            'Smart Contracts',
-            'Solutions DeFi',
-            'NFT et tokenisation',
-            'Integration wallet et dApp',
+            'Smart contracts securises avec architecture audit-ready',
+            'Protocoles DeFi pour trading, staking et liquidite',
+            'Systemes de tokens et gouvernance on-chain',
+            'Integration wallet et dApps',
+            'Conception interoperabilite cross-chain',
           ],
-          ctaLabel: 'Definir le scope',
+          ctaLabel: 'Definir le scope technique',
         },
         {
           accent: 'service-card-cyan',
           icon: 'A',
-          title: 'IA et Automatisation',
-          description: 'Systemes intelligents qui automatisent les flux, extraient des insights et accelerent la croissance.',
+          title: 'Systemes IA et Automatisation',
+          description: 'Systemes IA appliques pour automatiser les operations et reduire les couts.',
           points: [
-            'Applications basees sur l IA',
-            'Modeles de machine learning',
-            'Chatbots et NLP',
-            'Analyse et insights',
-            'Automatisation et workflows',
+            'Agents IA pour automatiser les operations',
+            'Modeles ML pour prediction et analyse',
+            'Chatbots intelligents et NLP',
+            'Pipelines data et dashboards analytiques',
+            'Automatisation de workflows a l echelle',
           ],
-          ctaLabel: 'Definir le scope',
+          ctaLabel: 'Definir le scope technique',
+        },
+        {
+          accent: 'service-card-blue',
+          icon: 'W',
+          title: 'Developpement Produit Full-Stack',
+          description: 'Applications et infrastructure pretes pour la production.',
+          points: [
+            'Applications web robustes et dashboards',
+            'Architecture API et integrations tierces',
+            'Plateformes SaaS et outils internes',
+            'Infrastructure cloud et delivery DevOps',
+          ],
+          ctaLabel: 'Definir le scope technique',
         },
       ],
     },
     process: {
       eyebrow: 'Notre Processus',
       title: 'Comment Nous Travaillons',
-      subtitle: 'Un processus eprouve pour transformer vos idees en produits numeriques puissants.',
+      subtitle: 'Un parcours clair de l idee au deploiement avec discipline technique.',
       steps: [
-        {
-          number: '1.',
-          icon: '💡',
-          title: 'Decouvrir',
-          text: 'Nous comprenons vos objectifs, votre audience et le contexte du produit.',
-        },
-        {
-          number: '2.',
-          icon: '✍️',
-          title: 'Planifier',
-          text: 'Nous definissons l architecture, les jalons et une feuille de route realiste.',
-        },
-        {
-          number: '3.',
-          icon: '</>',
-          title: 'Construire',
-          text: 'Nous developpons, testons et integrons avec un haut niveau de qualite.',
-        },
-        {
-          number: '4.',
-          icon: '🚀',
-          title: 'Lancer',
-          text: 'Nous deployeeons votre solution et securisons une mise en ligne stable.',
-        },
-        {
-          number: '5.',
-          icon: '📈',
-          title: 'Faire evoluer',
-          text: 'Nous optimisons, iterons et accompagnons la croissance du produit sur le long terme.',
-        },
+        { number: '1.', icon: '💡', title: 'Decouvrir', text: 'Nous analysons objectifs, exigences techniques et contexte marche.' },
+        { number: '2.', icon: '✍️', title: 'Planifier', text: 'Nous definissons architecture, modele de securite et roadmap.' },
+        { number: '3.', icon: '</>', title: 'Construire', text: 'Nous developpons, testons et integrons avec precision.' },
+        { number: '4.', icon: '🚀', title: 'Lancer', text: 'Nous deployons et assurons une mise en production propre.' },
+        { number: '5.', icon: '📈', title: 'Evoluer', text: 'Nous optimisons, faisons evoluer et accompagnons votre croissance.' },
       ],
     },
     why: {
-      eyebrow: 'Pourquoi Nous Choisir',
-      titleLead: 'Pourquoi Les Clients Choisissent',
-      titleAccent: 'GMX Labs',
+      eyebrow: 'Pourquoi GMX Labs',
+      titleLead: 'Specialistes de',
+      titleAccent: 'la livraison Web3',
       items: [
-        {
-          icon: '🛡️',
-          title: 'Equipe experte',
-          text: 'Ingenieurs et architectes experimentes avec une forte culture de delivery.',
-        },
-        {
-          icon: '⚡',
-          title: 'Stack moderne',
-          text: 'Des technologies recentes pour des produits resilients et durables.',
-        },
-        {
-          icon: '🔒',
-          title: 'Securite des la conception',
-          text: 'La securite et la performance sont integrees a chaque couche.',
-        },
-        {
-          icon: '📊',
-          title: 'Orientes resultats',
-          text: 'Focalises sur les resultats mesurables et la valeur business long terme.',
-        },
+        { icon: '🧠', title: 'Ingenierie DeFi concrete', text: 'Equipe avec experience terrain en smart contracts et protocoles DeFi.' },
+        { icon: '🛡️', title: 'Securite d abord', text: 'Nous concevons comme des defenseurs et pensons comme des attaquants.' },
+        { icon: '🏗️', title: 'Systemes production', text: 'Nous livrons des systemes maintenables, pas des prototypes fragiles.' },
+        { icon: '⚡', title: 'Rapide sans compromis', text: 'Execution rapide avec auditabilite et qualite de code.' },
+      ],
+    },
+    tech: {
+      eyebrow: 'Credibilite Technique',
+      title: 'Notre Stack',
+      categories: [
+        { label: 'Smart Contracts', items: ['Solidity', 'Foundry', 'Hardhat'] },
+        { label: 'Blockchain', items: ['EVM', 'Arbitrum', 'Polygon', 'Solana'] },
+        { label: 'Backend', items: ['Node.js', 'TypeScript', 'Python'] },
+        { label: 'Frontend', items: ['React', 'Next.js', 'Vite'] },
+        { label: 'IA et ML', items: ['Python', 'TensorFlow', 'LangChain'] },
+        { label: 'Infrastructure', items: ['AWS', 'Vercel', 'Docker'] },
       ],
     },
     industries: {
-      eyebrow: 'Secteurs Couverts',
+      eyebrow: 'Secteurs Cibles',
       title: 'Qui Nous Aidons',
-      items: ['Startups', 'Entreprises', 'Fintech', 'DeFi et Web3', 'E-commerce', 'IA et Donnees'],
-      note: 'Des startups en amorcage aux grandes entreprises, nous construisons des solutions concues pour evoluer.',
+      items: ['Protocoles DeFi et Web3', 'Entreprises IA et Data', 'Startups Fintech', 'Fondateurs SaaS'],
+      note: 'Nous nous concentrons sur les verticales ou l execution technique determine le resultat business.',
     },
     portfolio: {
-      eyebrow: 'Projets Mis En Avant',
-      title: 'Highlights Portfolio',
+      eyebrow: 'Realisations',
+      title: 'Portfolio Technique',
+      stackLabel: 'Stack :',
+      impactLabel: 'Impact :',
       items: [
         {
-          title: 'Intelligence de trading DeFi',
-          text: 'Tableaux de bord analytiques et workflows d intelligence de marche pour les equipes DeFi.',
+          title: 'Plateforme intelligence DeFi',
+          text: 'Pipelines on-chain en temps reel pour accelerer les decisions de strategie.',
+          stack: 'Solidity, Node.js, React, The Graph',
+          impact: 'Reduction de latence de decision grace aux donnees DEX en direct.',
         },
         {
-          title: 'Plateforme d actifs tokenises',
-          text: 'Architecture smart contracts et integration blockchain securisee pour des ecosystemes tokenises.',
+          title: 'Infrastructure actifs tokenises',
+          text: 'Architecture smart contracts et backend pour ecosystemes tokenises.',
+          stack: 'Solidity, TypeScript, React, AWS',
+          impact: 'Acceleration de la readiness de lancement avec securite accrue.',
         },
         {
           title: 'Moteur operations IA',
-          text: 'Pipelines d automatisation IA pour accelerer la livraison et fiabiliser les operations crypto.',
+          text: 'Automatisation par agents pour operations et reporting technique.',
+          stack: 'Python, LangChain, Node.js, Vercel',
+          impact: 'Reduction des taches manuelles et meilleure fiabilite operationnelle.',
         },
       ],
     },
     faq: {
       eyebrow: 'FAQ DeFi et Web3',
-      title: 'Questions Que Les Fondateurs Posent Avant De Construire',
-      subtitle:
-        'Des reponses claires pour les equipes qui preparant un produit Web3, un audit de smart contracts ou une solution blockchain avec IA.',
+      title: 'Questions Avant De Construire',
+      subtitle: 'Reponses claires pour les equipes qui lancent des produits Web3 et IA.',
       items: [
-        {
-          question: 'Que fait une agence de developpement DeFi ?',
-          answer:
-            'Une agence DeFi concoit, developpe et deploie des produits decentralises comme des plateformes de trading, des systemes de staking, des modules de lending et des dashboards protocolaires.',
-        },
-        {
-          question: 'Combien coute le developpement de smart contracts ?',
-          answer:
-            'Le cout depend du perimetre, de la complexite de la chaine et du niveau de tests. Les projets vont d un MVP cible a une suite complete de contrats prete pour la production.',
-        },
-        {
-          question: 'Que comprend un audit de smart contracts ?',
-          answer:
-            'En general : revue de code, modelisation des menaces, tests de vulnerabilite, simulation d exploits et rapport de remediation priorise pour votre equipe technique.',
-        },
-        {
-          question: 'Combien de temps faut-il pour construire une app Web3 ?',
-          answer:
-            'Un MVP Web3 cible peut etre lance en quelques semaines, tandis que des programmes plus vastes exigent une livraison par phases en architecture, developpement, tests et deploiement.',
-        },
-        {
-          question: 'Pouvez-vous integrer l IA dans des produits blockchain ?',
-          answer:
-            'Oui. Nous construisons des solutions d automatisation IA pour l analytique on-chain, le monitoring du risque, l automatisation des workflows et les operations produit intelligentes.',
-        },
+        { question: 'Que fait une agence DeFi ?', answer: 'Elle concoit, developpe et deploie des produits de finance decentralisee : trading, staking, lending et dashboards protocolaires.' },
+        { question: 'Quel est le cout d un smart contract ?', answer: 'Le cout depend du perimetre, de la complexite de la chaine et du niveau de tests.' },
+        { question: 'Que comprend un audit de smart contracts ?', answer: 'Revue de code, modelisation des menaces, tests de vulnerabilite et plan de remediation priorise.' },
+        { question: 'Combien de temps pour une app Web3 ?', answer: 'Un MVP peut sortir en quelques semaines. Les produits plus larges exigent des phases structurees.' },
+        { question: 'Pouvez-vous integrer l IA a la blockchain ?', answer: 'Oui, pour analytics on-chain, monitoring du risque et automatisation des operations.' },
       ],
     },
     cta: {
-      titleLead: 'Pret a construire quelque chose de',
-      titleAccent: 'fort',
-      titleTail: '?',
-      description: 'Transformons votre idee en produit numerique a fort impact avec une feuille de route claire.',
-      trust: 'Adopte par des fondateurs DeFi, des equipes fintech et des builders Web3.',
-      primaryCta: 'Demarrer votre projet',
-      secondaryCta: 'Planifier un appel',
-      statsAriaLabel: 'Indicateurs de l entreprise',
+      titleLead: 'Vous construisez en Web3 ou',
+      titleAccent: 'IA',
+      titleTail: ' ?',
+      description: 'Discutons de votre architecture et definissons une implementation pragmatique.',
+      trust: 'Support technique pour fondateurs, CTOs et equipes produit.',
+      primaryCta: 'Reserver un appel strategique',
+      secondaryCta: 'Demander une estimation',
+      statsAriaLabel: 'Indicateurs entreprise',
       stats: [
         { value: '50+', label: 'Projets livres' },
         { value: '30+', label: 'Clients satisfaits' },
-        { value: '4+', label: 'Ans d experience' },
+        { value: '4+', label: 'Ans experience' },
       ],
     },
     footer: {
-      description: 'Solutions numeriques pour le Web2, le Web3 et l IA.',
+      description: 'Ingenierie digitale specialisee pour produits Web3 et IA.',
       services: 'Services',
       process: 'Processus',
       faq: 'FAQ',
@@ -801,6 +720,8 @@ export const translations: Record<Language, Translation> = {
   pt: {
     brand: {
       label: 'GMX LABS',
+      tagline: 'Estudio independente de desenvolvimento Web3 e IA',
+      disclaimer: 'Estudio independente. Sem afiliacao com GMX Protocol.',
       homeAriaLabel: 'Inicio da GMX Labs',
     },
     nav: {
@@ -816,191 +737,152 @@ export const translations: Record<Language, Translation> = {
       languageSwitcherLabel: 'Selecionar idioma',
     },
     hero: {
-      eyebrow: 'Construir. Inovar. Escalar.',
-      titleLead: 'Solucoes digitais para Web2,',
-      titleAccent: 'Web3 e IA',
-      description:
-        'Entregamos desenvolvimento Web3, solucoes DeFi, smart contracts, integracoes blockchain e automacao com IA para gerar crescimento mensuravel.',
+      eyebrow: 'Engenharia Web3 + IA',
+      titleLead: 'Construimos aplicacoes seguras',
+      titleAccent: 'Web3 e IA para producao.',
+      description: 'Da arquitetura ao deploy, desenhamos, desenvolvemos e auditamos sistemas prontos para escalar.',
       trustAriaLabel: 'Pontos de confianca',
-      trustPoints: ['Tecnologias modernas', 'Arquitetura escalavel', 'Seguranca primeiro'],
-      primaryCta: 'Explorar solucoes',
-      secondaryCta: 'Agendar chamada',
-      stackCards: ['Web2', 'Web3', 'IA'],
+      trustPoints: ['Entrega com foco em seguranca', 'Arquitetura audit-ready', 'Execucao orientada a producao'],
+      primaryCta: 'Agendar call estrategica',
+      secondaryCta: 'Solicitar assessment tecnico',
+      stackCards: ['Web2', 'Web3', 'IA', 'Blockchain'],
     },
     services: {
-      eyebrow: 'O Que Fazemos',
-      title: 'Nossos Servicos',
-      subtitle:
-        'Desenvolvimento completo de produtos para Web2, Web3, smart contracts, plataformas DeFi, solucoes blockchain e automacao com IA.',
+      eyebrow: 'Capacidades Principais',
+      title: 'O Que Construimos',
+      subtitle: 'Engenharia especializada para equipes construindo em Web3 e IA.',
       learnMoreAriaPrefix: 'Saiba mais sobre',
       items: [
         {
-          accent: 'service-card-blue',
-          icon: 'W',
-          title: 'Desenvolvimento Web2',
-          description: 'Aplicacoes web robustas, escalaveis e seguras alinhadas aos objetivos do seu negocio.',
-          points: ['Aplicacoes web sob medida', 'Plataformas SaaS', 'APIs e integracoes', 'Cloud e DevOps'],
-          ctaLabel: 'Definir escopo',
-        },
-        {
           accent: 'service-card-purple',
           icon: 'B',
-          title: 'Web3 e Blockchain',
-          description: 'Solucoes descentralizadas e integracoes blockchain para a nova geracao de produtos digitais.',
+          title: 'Engenharia Web3 e Smart Contracts',
+          description: 'Arquitetura segura de protocolos e contratos inteligentes prontos para auditoria.',
           points: [
-            'Desenvolvimento de dApps',
-            'Smart Contracts',
-            'Solucoes DeFi',
-            'NFTs e tokenizacao',
+            'Smart contracts seguros com arquitetura audit-ready',
+            'Protocolos DeFi para trading, staking e liquidez',
+            'Sistemas de token e governanca on-chain',
             'Integracao de wallets e dApps',
+            'Design de interoperabilidade cross-chain',
           ],
-          ctaLabel: 'Definir escopo',
+          ctaLabel: 'Definir escopo tecnico',
         },
         {
           accent: 'service-card-cyan',
           icon: 'A',
-          title: 'IA e Automacao',
-          description: 'Sistemas inteligentes que automatizam fluxos, extraem insights e aceleram resultados.',
+          title: 'Sistemas de IA e Automacao',
+          description: 'Sistemas de IA aplicados para automatizar operacoes e reduzir custos.',
           points: [
-            'Aplicacoes com IA',
-            'Modelos de machine learning',
-            'Chatbots e NLP',
-            'Analytics e insights',
-            'Automacao e workflows',
+            'Agentes de IA para automatizar operacoes',
+            'Modelos ML para previsao e analise',
+            'Chatbots inteligentes e NLP',
+            'Pipelines de dados e dashboards',
+            'Automacao de workflows em escala',
           ],
-          ctaLabel: 'Definir escopo',
+          ctaLabel: 'Definir escopo tecnico',
+        },
+        {
+          accent: 'service-card-blue',
+          icon: 'W',
+          title: 'Desenvolvimento Full-Stack',
+          description: 'Aplicacoes e infraestrutura prontas para ambientes de producao exigentes.',
+          points: [
+            'Aplicacoes web e dashboards de producao',
+            'Arquitetura de APIs e integracoes',
+            'Plataformas SaaS e ferramentas internas',
+            'Infraestrutura cloud e entrega DevOps',
+          ],
+          ctaLabel: 'Definir escopo tecnico',
         },
       ],
     },
     process: {
       eyebrow: 'Nosso Processo',
       title: 'Como Trabalhamos',
-      subtitle: 'Um processo comprovado para transformar ideias em produtos digitais de alto impacto.',
+      subtitle: 'Caminho estruturado da ideia ao deploy com disciplina tecnica.',
       steps: [
-        {
-          number: '1.',
-          icon: '💡',
-          title: 'Descobrir',
-          text: 'Entendemos seus objetivos, publico e contexto real do produto.',
-        },
-        {
-          number: '2.',
-          icon: '✍️',
-          title: 'Planejar',
-          text: 'Definimos arquitetura, marcos e um roadmap pratico.',
-        },
-        {
-          number: '3.',
-          icon: '</>',
-          title: 'Construir',
-          text: 'Desenvolvemos, testamos e integramos com foco em performance e qualidade.',
-        },
-        {
-          number: '4.',
-          icon: '🚀',
-          title: 'Lancar',
-          text: 'Publicamos sua solucao e garantimos uma entrada em producao estavel.',
-        },
-        {
-          number: '5.',
-          icon: '📈',
-          title: 'Crescer',
-          text: 'Otimizamos, iteramos e apoiamos o crescimento de longo prazo do produto.',
-        },
+        { number: '1.', icon: '💡', title: 'Descobrir', text: 'Analisamos objetivos, requisitos tecnicos e contexto de mercado.' },
+        { number: '2.', icon: '✍️', title: 'Planejar', text: 'Definimos arquitetura, modelo de seguranca e roadmap.' },
+        { number: '3.', icon: '</>', title: 'Construir', text: 'Desenvolvemos, testamos e integramos com precisao.' },
+        { number: '4.', icon: '🚀', title: 'Lancar', text: 'Fazemos deploy e garantimos um go-live limpo.' },
+        { number: '5.', icon: '📈', title: 'Escalar', text: 'Otimizamos, escalamos e apoiamos crescimento continuo.' },
       ],
     },
     why: {
-      eyebrow: 'Por Que Nos Escolher',
-      titleLead: 'Por Que Os Clientes Escolhem',
-      titleAccent: 'GMX Labs',
+      eyebrow: 'Por Que GMX Labs',
+      titleLead: 'Especialistas em',
+      titleAccent: 'entrega Web3',
       items: [
-        {
-          icon: '🛡️',
-          title: 'Time experiente',
-          text: 'Engenheiros e arquitetos com experiencia profunda em entrega real.',
-        },
-        {
-          icon: '⚡',
-          title: 'Stack moderno',
-          text: 'Tecnologias atuais para produtos resilientes e preparados para o futuro.',
-        },
-        {
-          icon: '🔒',
-          title: 'Seguranca por design',
-          text: 'Seguranca e performance sao construidas em cada camada.',
-        },
-        {
-          icon: '📊',
-          title: 'Foco em resultado',
-          text: 'Orientados a resultados mensuraveis e valor de negocio duradouro.',
-        },
+        { icon: '🧠', title: 'Engenharia DeFi real', text: 'Equipe com experiencia pratica em smart contracts e protocolos DeFi.' },
+        { icon: '🛡️', title: 'Seguranca primeiro', text: 'Projetamos como defensores e pensamos como atacantes.' },
+        { icon: '🏗️', title: 'Sistemas de producao', text: 'Entregamos sistemas mantiveis, nao prototipos frageis.' },
+        { icon: '⚡', title: 'Rapido com qualidade', text: 'Execucao veloz sem comprometer auditabilidade ou qualidade.' },
+      ],
+    },
+    tech: {
+      eyebrow: 'Credibilidade Tecnica',
+      title: 'Nosso Stack',
+      categories: [
+        { label: 'Smart Contracts', items: ['Solidity', 'Foundry', 'Hardhat'] },
+        { label: 'Blockchain', items: ['EVM', 'Arbitrum', 'Polygon', 'Solana'] },
+        { label: 'Backend', items: ['Node.js', 'TypeScript', 'Python'] },
+        { label: 'Frontend', items: ['React', 'Next.js', 'Vite'] },
+        { label: 'IA e ML', items: ['Python', 'TensorFlow', 'LangChain'] },
+        { label: 'Infraestrutura', items: ['AWS', 'Vercel', 'Docker'] },
       ],
     },
     industries: {
       eyebrow: 'Setores Atendidos',
       title: 'Quem Ajudamos',
-      items: ['Startups', 'Empresas', 'Fintech', 'DeFi e Web3', 'E-commerce', 'IA e Dados'],
-      note: 'De startups em fase inicial a empresas globais, criamos solucoes prontas para escalar.',
+      items: ['Protocolos DeFi e Web3', 'Empresas de IA e Dados', 'Startups Fintech', 'Fundadores SaaS'],
+      note: 'Foco em verticais onde execucao tecnica impacta diretamente o resultado de negocio.',
     },
     portfolio: {
       eyebrow: 'Trabalhos em Destaque',
-      title: 'Destaques do Portfolio',
+      title: 'Portfolio Tecnico',
+      stackLabel: 'Stack:',
+      impactLabel: 'Impacto:',
       items: [
         {
-          title: 'Inteligencia para trading DeFi',
-          text: 'Dashboards analiticos e fluxos de inteligencia de mercado para equipes de protocolos DeFi.',
+          title: 'Plataforma de inteligencia DeFi',
+          text: 'Pipelines on-chain em tempo real para acelerar decisoes de estrategia.',
+          stack: 'Solidity, Node.js, React, The Graph',
+          impact: 'Reduziu latencia de decisao com dados DEX ao vivo.',
         },
         {
-          title: 'Plataforma de ativos tokenizados',
-          text: 'Arquitetura de smart contracts e integracao blockchain segura para ecossistemas tokenizados.',
+          title: 'Infraestrutura de ativos tokenizados',
+          text: 'Arquitetura de contratos e backend para ecossistemas tokenizados.',
+          stack: 'Solidity, TypeScript, React, AWS',
+          impact: 'Acelerou readiness de lancamento com seguranca reforcada.',
         },
         {
-          title: 'Motor operacional com IA',
-          text: 'Pipelines de automacao com IA para entregas mais rapidas e operacoes cripto resilientes.',
+          title: 'Motor de operacoes com IA',
+          text: 'Automacao por agentes para operacoes e reporting tecnico.',
+          stack: 'Python, LangChain, Node.js, Vercel',
+          impact: 'Reduziu trabalho manual e aumentou consistencia operacional.',
         },
       ],
     },
     faq: {
       eyebrow: 'FAQ DeFi e Web3',
-      title: 'Perguntas Que Fundadores Fazem Antes de Construir',
-      subtitle:
-        'Respostas claras para equipes que planejam produtos Web3, auditorias de smart contracts e solucoes blockchain com IA.',
+      title: 'Perguntas Antes de Construir',
+      subtitle: 'Respostas claras para equipes que planejam produtos Web3 e IA.',
       items: [
-        {
-          question: 'O que faz uma agencia de desenvolvimento DeFi?',
-          answer:
-            'Uma agencia DeFi projeta, desenvolve e implanta produtos financeiros descentralizados como plataformas de trading, sistemas de staking, modulos de emprestimo e dashboards de protocolo.',
-        },
-        {
-          question: 'Quanto custa desenvolver smart contracts?',
-          answer:
-            'O custo depende do escopo, da complexidade da rede e da profundidade dos testes. Os projetos variam de MVPs enxutos a suites completas prontas para producao.',
-        },
-        {
-          question: 'O que esta incluido em uma auditoria de smart contracts?',
-          answer:
-            'Normalmente inclui revisao de codigo, modelagem de ameacas, testes de vulnerabilidade, simulacao de exploits e um relatorio priorizado para sua equipe de engenharia.',
-        },
-        {
-          question: 'Quanto tempo leva para construir um app Web3?',
-          answer:
-            'Um MVP Web3 focado pode ser lancado em semanas, enquanto programas maiores exigem entregas em fases de arquitetura, desenvolvimento, testes e deploy.',
-        },
-        {
-          question: 'Vocês conseguem integrar IA em produtos blockchain?',
-          answer:
-            'Sim. Criamos automacao com IA para analytics on-chain, monitoramento de risco, automacao de workflows e operacoes inteligentes sobre sistemas blockchain.',
-        },
+        { question: 'O que faz uma agencia DeFi?', answer: 'Ela projeta, desenvolve e implanta produtos de financas descentralizadas como trading, staking, lending e dashboards.' },
+        { question: 'Quanto custa desenvolver smart contracts?', answer: 'Depende do escopo, da complexidade da rede e da profundidade dos testes.' },
+        { question: 'O que inclui uma auditoria de smart contracts?', answer: 'Revisao de codigo, modelagem de ameacas, testes de vulnerabilidades e plano de remediacao priorizado.' },
+        { question: 'Quanto tempo leva um app Web3?', answer: 'Um MVP pode ser lancado em semanas. Produtos maiores exigem fases estruturadas.' },
+        { question: 'Vocês integram IA em blockchain?', answer: 'Sim. Implementamos IA para analytics on-chain, monitoramento de risco e automacao operacional.' },
       ],
     },
     cta: {
-      titleLead: 'Pronto para construir algo',
-      titleAccent: 'incrivel',
+      titleLead: 'Construindo em Web3 ou',
+      titleAccent: 'IA',
       titleTail: '?',
-      description: 'Vamos transformar sua ideia em um produto digital de alto impacto com um roadmap claro.',
-      trust: 'Confiado por fundadores DeFi, times fintech e builders Web3.',
-      primaryCta: 'Comecar projeto',
-      secondaryCta: 'Agendar discovery call',
+      description: 'Vamos discutir sua arquitetura e definir uma implementacao pragmatica.',
+      trust: 'Suporte tecnico para founders, CTOs e times de produto.',
+      primaryCta: 'Agendar call estrategica',
+      secondaryCta: 'Solicitar estimativa',
       statsAriaLabel: 'Metricas da empresa',
       stats: [
         { value: '50+', label: 'Projetos entregues' },
@@ -1009,7 +891,7 @@ export const translations: Record<Language, Translation> = {
       ],
     },
     footer: {
-      description: 'Solucoes digitais em Web2, Web3 e IA.',
+      description: 'Engenharia digital especializada para produtos Web3 e IA.',
       services: 'Servicos',
       process: 'Processo',
       faq: 'FAQ',

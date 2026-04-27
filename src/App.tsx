@@ -42,6 +42,11 @@ function App() {
         <section className="hero-section reveal" id="solutions">
           <div className="hero-copy-col">
             <p className="eyebrow-pill">{t.hero.eyebrow}</p>
+            <p className="hero-brand-note">{t.brand.tagline}</p>
+            <h1>
+              {t.hero.titleLead} <span className="accent-text">{t.hero.titleAccent}</span>
+            </h1>
+
             <div className="hero-video-wrap" aria-label="Web3 showcase video">
               <video
                 className="hero-video"
@@ -56,9 +61,7 @@ function App() {
                 Your browser does not support the video tag.
               </video>
             </div>
-            <h1>
-              {t.hero.titleLead} <span className="accent-text">{t.hero.titleAccent}</span>
-            </h1>
+
             <p>{t.hero.description}</p>
 
             <ul className="trust-points" aria-label={t.hero.trustAriaLabel}>
@@ -68,13 +71,14 @@ function App() {
             </ul>
 
             <div className="hero-ctas">
-              <a className="btn btn-primary" href="#services">
+              <a className="btn btn-primary" href="https://calendly.com/rigocrypto">
                 {t.hero.primaryCta}
               </a>
-              <a className="btn btn-secondary" href="https://calendly.com/rigocrypto">
+              <a className="btn btn-secondary" href="mailto:rigovivas71@gmail.com?subject=Technical%20Assessment%20Request">
                 {t.hero.secondaryCta}
               </a>
             </div>
+            <p className="hero-disclaimer">{t.brand.disclaimer}</p>
           </div>
 
           <div className="hero-visual-col" aria-hidden="true">
@@ -82,6 +86,7 @@ function App() {
             <div className="stack-card stack-web2">{t.hero.stackCards[0]}</div>
             <div className="stack-card stack-web3">{t.hero.stackCards[1]}</div>
             <div className="stack-card stack-ai">{t.hero.stackCards[2]}</div>
+            <div className="stack-card stack-blockchain">{t.hero.stackCards[3] ?? 'Blockchain'}</div>
           </div>
         </section>
 
@@ -154,6 +159,23 @@ function App() {
           </div>
         </section>
 
+        <section className="section reveal" id="stack">
+          <p className="section-eyebrow">{t.tech.eyebrow}</p>
+          <h2>{t.tech.title}</h2>
+          <div className="stack-grid">
+            {t.tech.categories.map((category) => (
+              <article className="stack-category" key={`${language}-${category.label}`}>
+                <h3>{category.label}</h3>
+                <ul>
+                  {category.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="section reveal">
           <p className="section-eyebrow">{t.industries.eyebrow}</p>
           <h2>{t.industries.title}</h2>
@@ -175,6 +197,12 @@ function App() {
               <article className="portfolio-card" key={`${language}-${item.title}`}>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
+                <p className="portfolio-meta">
+                  <strong>{t.portfolio.stackLabel}</strong> {item.stack}
+                </p>
+                <p className="portfolio-meta">
+                  <strong>{t.portfolio.impactLabel}</strong> {item.impact}
+                </p>
               </article>
             ))}
           </div>
@@ -203,10 +231,10 @@ function App() {
             <p>{t.cta.description}</p>
             <p className="cta-trust">{t.cta.trust}</p>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="mailto:rigovivas71@gmail.com">
+              <a className="btn btn-primary" href="https://calendly.com/rigocrypto">
                 {t.cta.primaryCta}
               </a>
-              <a className="btn btn-secondary" href="https://calendly.com/rigocrypto">
+              <a className="btn btn-secondary" href="mailto:rigovivas71@gmail.com?subject=Project%20Estimate%20Request">
                 {t.cta.secondaryCta}
               </a>
             </div>
@@ -236,6 +264,7 @@ function App() {
         </div>
         <div>
           <a href="mailto:rigovivas71@gmail.com">rigovivas71@gmail.com</a>
+          <p className="footer-disclaimer">{t.brand.disclaimer}</p>
           <p>{t.footer.copyright}</p>
         </div>
       </footer>
