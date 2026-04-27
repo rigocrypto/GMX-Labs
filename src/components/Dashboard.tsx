@@ -1,8 +1,17 @@
-@@ .. @@
-       <div className="flex items-center justify-between mb-8">
-         <div className="flex items-center space-x-4">
--          <Logo size="sm" />
-+          <Logo size="md" />
-           <div>
-             <h1 className="text-2xl font-bold text-white font-orbitron">Dashboard</h1>
-             <p className="text-gray-400 text-sm">Welcome back, Elite Client</p>
+import Logo from './Logo'
+
+const Dashboard = () => {
+  return (
+    <section aria-label="Client Dashboard" className="legacy-card">
+      <div className="legacy-header">
+        <Logo size="sm" />
+        <div>
+          <h2>Dashboard</h2>
+          <p>Welcome back, elite client.</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default Dashboard
