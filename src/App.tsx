@@ -42,6 +42,20 @@ function App() {
         <section className="hero-section reveal" id="solutions">
           <div className="hero-copy-col">
             <p className="eyebrow-pill">{t.hero.eyebrow}</p>
+            <div className="hero-video-wrap" aria-label="Web3 showcase video">
+              <video
+                className="hero-video"
+                src={`${import.meta.env.BASE_URL}Web3-logo.mp4`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
             <h1>
               {t.hero.titleLead} <span className="accent-text">{t.hero.titleAccent}</span>
             </h1>

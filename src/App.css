@@ -226,6 +226,24 @@ html {
   border-radius: 999px;
 }
 
+.hero-video-wrap {
+  margin-top: 0.72rem;
+  border-radius: 0.72rem;
+  border: 1px solid rgba(112, 137, 255, 0.28);
+  background: rgba(7, 13, 42, 0.66);
+  box-shadow: 0 12px 26px rgba(7, 14, 44, 0.5);
+  overflow: hidden;
+  max-width: 560px;
+}
+
+.hero-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: cover;
+}
+
 h1,
 h2,
 h3 {
@@ -779,6 +797,10 @@ h1 {
 
   .hero-visual-col {
     min-height: 280px;
+  }
+
+  .hero-video {
+    max-height: 240px;
   }
 
   .stack-card {
