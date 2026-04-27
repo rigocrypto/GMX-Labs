@@ -158,7 +158,7 @@ function App() {
           <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a className="btn nav-cta" href="https://calendly.com/YOUR_CALENDLY_LINK">
+        <a className="btn nav-cta" href="https://calendly.com/rigocrypto">
           Let&apos;s Talk
         </a>
       </header>
@@ -185,7 +185,7 @@ function App() {
               <a className="btn btn-primary" href="#services">
                 Explore Solutions
               </a>
-              <a className="btn btn-secondary" href="https://calendly.com/YOUR_CALENDLY_LINK">
+              <a className="btn btn-secondary" href="https://calendly.com/rigocrypto">
                 Book Strategy Call
               </a>
             </div>
@@ -318,10 +318,10 @@ function App() {
             <p>Let&apos;s turn your idea into a high-impact digital product with a clear delivery roadmap.</p>
             <p className="cta-trust">Trusted by DeFi founders, fintech teams, and Web3 product builders.</p>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="mailto:hello@gmxlabs.example">
+              <a className="btn btn-primary" href="mailto:rigovivas71@gmail.com">
                 Start Your Project
               </a>
-              <a className="btn btn-secondary" href="https://calendly.com/YOUR_CALENDLY_LINK">
+              <a className="btn btn-secondary" href="https://calendly.com/rigocrypto">
                 Schedule Discovery Call
               </a>
             </div>
@@ -356,7 +356,7 @@ function App() {
           <a href="#contact">Contact</a>
         </div>
         <div>
-          <a href="mailto:hello@gmxlabs.example">hello@gmxlabs.example</a>
+          <a href="mailto:rigovivas71@gmail.com">rigovivas71@gmail.com</a>
           <p>Copyright 2026 GMX Labs</p>
         </div>
       </footer>

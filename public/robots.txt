@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.gmxlabs.example/sitemap.xml
+Sitemap: https://rigocrypto.github.io/gmx-labs/sitemap.xml
