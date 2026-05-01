@@ -89,6 +89,11 @@ type Translation = {
     trustPoints: string[]
     primaryCta: string
     secondaryCta: string
+    viewServicesCta: string
+    secureCheckoutCta: string
+    videoAriaLabel: string
+    videoFallback: string
+    blockchainLabel: string
     stackCards: string[]
   }
   services: {
@@ -97,6 +102,13 @@ type Translation = {
     subtitle: string
     learnMoreAriaPrefix: string
     items: ServiceItem[]
+    additionalItems: ServiceItem[]
+  }
+  readiness: {
+    eyebrow: string
+    title: string
+    subtitle: string
+    items: WhyItem[]
   }
   process: {
     eyebrow: string
@@ -133,6 +145,16 @@ type Translation = {
     title: string
     subtitle: string
     items: FaqItem[]
+    additionalItems: FaqItem[]
+  }
+  pricing: {
+    titleLead: string
+    titleAccent: string
+    titleTail: string
+    description: string
+    trust: string
+    primaryCta: string
+    secondaryCta: string
   }
   cta: {
     titleLead: string
@@ -150,8 +172,11 @@ type Translation = {
     description: string
     services: string
     process: string
+    pricing: string
     faq: string
     contact: string
+    bookCalendly: string
+    secureStripeCheckout: string
     copyright: string
   }
 }
@@ -185,6 +210,11 @@ export const translations: Record<Language, Translation> = {
       trustPoints: ['Security-first delivery', 'Audit-ready architecture', 'Production-focused execution'],
       primaryCta: 'Book Strategy Call',
       secondaryCta: 'Get Technical Assessment',
+      viewServicesCta: 'View Services',
+      secureCheckoutCta: 'Start with Secure Checkout',
+      videoAriaLabel: 'Web3 showcase video',
+      videoFallback: 'Your browser does not support the video tag.',
+      blockchainLabel: 'Blockchain',
       stackCards: ['Web2', 'Web3', 'AI', 'Blockchain'],
     },
     services: {
@@ -234,6 +264,43 @@ export const translations: Record<Language, Translation> = {
           ],
           ctaLabel: 'Get Technical Scope',
         },
+      ],
+      additionalItems: [
+        {
+          accent: 'service-card-blue',
+          icon: 'S',
+          title: 'SEO and Discoverability',
+          description: 'Help your project get found with launch-ready SEO foundations and social preview reliability.',
+          points: ['Canonical metadata alignment', 'Open Graph and social card readiness', 'sitemap.xml and robots.txt validation support'],
+          ctaLabel: 'Improve Visibility',
+        },
+        {
+          accent: 'service-card-cyan',
+          icon: 'H',
+          title: 'Security Hardening',
+          description: 'Reduce launch risk with clean configuration, external-link hygiene, and documented release checks.',
+          points: ['Dependency and build hygiene checks', 'Launch-risk documentation review', 'Runtime placeholder and link consistency checks'],
+          ctaLabel: 'Reduce Risk',
+        },
+        {
+          accent: 'service-card-purple',
+          icon: 'L',
+          title: 'Technical Launch Support',
+          description: 'End-to-end launch support from checkout and booking flows to final release confidence.',
+          points: ['Stripe payment flow support', 'Calendly and contact funnel setup', 'Pre-launch QA and release governance'],
+          ctaLabel: 'Plan Launch',
+        },
+      ],
+    },
+    readiness: {
+      eyebrow: 'Trust and Launch Readiness',
+      title: 'Built for Clarity Before Go-Live',
+      subtitle: 'GMX Labs keeps launch-critical assets organized and reviewable across metadata, technical checks, and conversion flows.',
+      items: [
+        { icon: 'SEO', title: 'SEO and Discoverability', text: 'Canonical URL, Open Graph tags, Twitter cards, robots.txt, and sitemap.xml are present for launch.' },
+        { icon: 'SEC', title: 'Security Hardening', text: 'Security-conscious external links, lint and build checks, and launch-risk documentation reduce avoidable production mistakes.' },
+        { icon: 'QA', title: 'Governance Visibility', text: 'QA and launch checklist files are tracked in-repo so release readiness is explicit, auditable, and easy to review.' },
+        { icon: 'UX', title: 'Conversion-Focused UX', text: 'Users can choose a path that matches intent: view services, book on Calendly, or start securely through Stripe checkout.' },
       ],
     },
     process: {
@@ -329,6 +396,29 @@ export const translations: Record<Language, Translation> = {
           answer: 'Yes. We build AI layers for on-chain analytics, risk monitoring, workflow automation, and product operations.',
         },
       ],
+      additionalItems: [
+        {
+          question: 'Can I book a consultation before paying?',
+          answer: 'Yes. Start with a strategy call on Calendly, then proceed to Stripe checkout when scope is clear.',
+        },
+        {
+          question: 'Are payments secure?',
+          answer: 'Yes. Payments are processed through Stripe using a secure hosted checkout page.',
+        },
+        {
+          question: 'How long does a typical project take?',
+          answer: 'Timeline depends on scope. Focused landing page projects can move quickly, while broader systems take phased delivery.',
+        },
+      ],
+    },
+    pricing: {
+      titleLead: 'Ready to start with',
+      titleAccent: 'secure checkout',
+      titleTail: '?',
+      description: 'Use Stripe to reserve your project slot and kick off delivery.',
+      trust: 'Fast onboarding. Clear scope. Online digital delivery.',
+      primaryCta: 'Start Project',
+      secondaryCta: 'Schedule a Free Consultation',
     },
     cta: {
       titleLead: 'Building in Web3 or',
@@ -350,8 +440,11 @@ export const translations: Record<Language, Translation> = {
       description: 'Specialized digital engineering for Web3 and AI products.',
       services: 'Services',
       process: 'Process',
+      pricing: 'Pricing',
       faq: 'FAQ',
       contact: 'Contact',
+      bookCalendly: 'Book on Calendly',
+      secureStripeCheckout: 'Secure Stripe Checkout',
       copyright: 'Copyright 2026 GMX Labs',
     },
   },
@@ -383,6 +476,11 @@ export const translations: Record<Language, Translation> = {
       trustPoints: ['Entrega orientada a seguridad', 'Arquitectura lista para auditoria', 'Ejecucion enfocada en produccion'],
       primaryCta: 'Reservar llamada estrategica',
       secondaryCta: 'Solicitar evaluación técnica',
+      viewServicesCta: 'Ver servicios',
+      secureCheckoutCta: 'Iniciar con pago seguro',
+      videoAriaLabel: 'Video de muestra Web3',
+      videoFallback: 'Tu navegador no soporta el video.',
+      blockchainLabel: 'Blockchain',
       stackCards: ['Web2', 'Web3', 'IA', 'Blockchain'],
     },
     services: {
@@ -432,6 +530,43 @@ export const translations: Record<Language, Translation> = {
           ],
           ctaLabel: 'Definir alcance tecnico',
         },
+      ],
+      additionalItems: [
+        {
+          accent: 'service-card-blue',
+          icon: 'S',
+          title: 'SEO y Descubribilidad',
+          description: 'Ayudamos a que tu proyecto se encuentre mejor con bases SEO listas para lanzamiento y previsualizacion social confiable.',
+          points: ['Alineacion de metadatos canonicos', 'Open Graph y tarjetas sociales listas', 'Soporte de validacion de sitemap.xml y robots.txt'],
+          ctaLabel: 'Mejorar visibilidad',
+        },
+        {
+          accent: 'service-card-cyan',
+          icon: 'H',
+          title: 'Endurecimiento de Seguridad',
+          description: 'Reducimos riesgo de lanzamiento con configuracion limpia, enlaces externos seguros y checks documentados.',
+          points: ['Revision de dependencias y build', 'Revision de riesgos de lanzamiento', 'Consistencia de placeholders y enlaces en runtime'],
+          ctaLabel: 'Reducir riesgo',
+        },
+        {
+          accent: 'service-card-purple',
+          icon: 'L',
+          title: 'Soporte Tecnico de Lanzamiento',
+          description: 'Soporte de punta a punta desde pagos y reservas hasta confianza final para salir a produccion.',
+          points: ['Soporte para flujo de pago con Stripe', 'Configuracion de embudo con Calendly y contacto', 'QA pre-lanzamiento y gobernanza de release'],
+          ctaLabel: 'Planificar lanzamiento',
+        },
+      ],
+    },
+    readiness: {
+      eyebrow: 'Confianza y Preparacion de Lanzamiento',
+      title: 'Claridad total antes del go-live',
+      subtitle: 'GMX Labs mantiene activos criticos de lanzamiento organizados y auditables en metadatos, controles tecnicos y flujo de conversion.',
+      items: [
+        { icon: 'SEO', title: 'SEO y Descubribilidad', text: 'URL canonica, Open Graph, tarjetas de Twitter, robots.txt y sitemap.xml estan presentes para lanzamiento.' },
+        { icon: 'SEC', title: 'Endurecimiento de Seguridad', text: 'Enlaces externos seguros, checks de lint/build y documentacion de riesgos reducen errores evitables en produccion.' },
+        { icon: 'QA', title: 'Visibilidad de Gobernanza', text: 'Los archivos de QA y checklist de lanzamiento se gestionan en el repo para una revision clara y trazable.' },
+        { icon: 'UX', title: 'UX enfocada en conversion', text: 'El usuario puede elegir su ruta: ver servicios, reservar en Calendly o iniciar con checkout seguro en Stripe.' },
       ],
     },
     process: {
@@ -512,6 +647,29 @@ export const translations: Record<Language, Translation> = {
         { question: 'Cuanto tarda una app Web3?', answer: 'Un MVP puede lanzarse en semanas. Productos mayores requieren fases de arquitectura, desarrollo, pruebas y despliegue.' },
         { question: 'Pueden integrar IA en blockchain?', answer: 'Si. Implementamos IA para analitica on-chain, monitoreo de riesgo y automatizacion operativa.' },
       ],
+      additionalItems: [
+        {
+          question: 'Puedo reservar una consulta antes de pagar?',
+          answer: 'Si. Puedes comenzar con una llamada estrategica en Calendly y luego avanzar a Stripe cuando el alcance este claro.',
+        },
+        {
+          question: 'Los pagos son seguros?',
+          answer: 'Si. Los pagos se procesan con Stripe mediante un checkout seguro alojado.',
+        },
+        {
+          question: 'Cuanto tarda un proyecto tipico?',
+          answer: 'Depende del alcance. Una landing enfocada puede avanzar rapido, mientras proyectos amplios se entregan por fases.',
+        },
+      ],
+    },
+    pricing: {
+      titleLead: 'Listo para empezar con',
+      titleAccent: 'checkout seguro',
+      titleTail: '?',
+      description: 'Usa Stripe para reservar tu espacio de proyecto y comenzar la entrega.',
+      trust: 'Onboarding rapido. Alcance claro. Entrega digital online.',
+      primaryCta: 'Iniciar proyecto',
+      secondaryCta: 'Agendar consulta gratuita',
     },
     cta: {
       titleLead: 'Construyendo en Web3 o',
@@ -533,8 +691,11 @@ export const translations: Record<Language, Translation> = {
       description: 'Ingenieria digital especializada para productos Web3 e IA.',
       services: 'Servicios',
       process: 'Proceso',
+      pricing: 'Precios',
       faq: 'FAQ',
       contact: 'Contacto',
+      bookCalendly: 'Reservar en Calendly',
+      secureStripeCheckout: 'Checkout seguro con Stripe',
       copyright: 'Copyright 2026 GMX Labs',
     },
   },
@@ -566,6 +727,11 @@ export const translations: Record<Language, Translation> = {
       trustPoints: ['Livraison orientee securite', 'Architecture prete pour audit', 'Execution orientee production'],
       primaryCta: 'Reserver un appel strategique',
       secondaryCta: 'Demander une évaluation technique',
+      viewServicesCta: 'Voir les services',
+      secureCheckoutCta: 'Demarrer avec paiement securise',
+      videoAriaLabel: 'Video de presentation Web3',
+      videoFallback: 'Votre navigateur ne prend pas en charge la video.',
+      blockchainLabel: 'Blockchain',
       stackCards: ['Web2', 'Web3', 'IA', 'Blockchain'],
     },
     services: {
@@ -615,6 +781,43 @@ export const translations: Record<Language, Translation> = {
           ],
           ctaLabel: 'Définir le périmètre technique',
         },
+      ],
+      additionalItems: [
+        {
+          accent: 'service-card-blue',
+          icon: 'S',
+          title: 'SEO et Decouvrabilite',
+          description: 'Nous aidons votre projet a etre mieux trouve grace a des bases SEO prêtes pour le lancement et des apercus sociaux fiables.',
+          points: ['Alignement des metadonnees canoniques', 'Open Graph et social cards prêtes', 'Support de validation sitemap.xml et robots.txt'],
+          ctaLabel: 'Ameliorer la visibilite',
+        },
+        {
+          accent: 'service-card-cyan',
+          icon: 'H',
+          title: 'Renforcement de la Securite',
+          description: 'Nous reduisons le risque de lancement avec une configuration propre, des liens externes securises et des controles documentes.',
+          points: ['Hygiene des dependances et du build', 'Revue des risques de lancement', 'Verification des placeholders runtime et coherence des liens'],
+          ctaLabel: 'Reduire le risque',
+        },
+        {
+          accent: 'service-card-purple',
+          icon: 'L',
+          title: 'Support Technique de Lancement',
+          description: 'Support complet, du paiement et de la prise de rendez-vous jusqu a la confiance finale avant mise en production.',
+          points: ['Support du flux de paiement Stripe', 'Configuration des parcours Calendly et contact', 'QA pre-lancement et gouvernance de release'],
+          ctaLabel: 'Planifier le lancement',
+        },
+      ],
+    },
+    readiness: {
+      eyebrow: 'Confiance et Preparation au Lancement',
+      title: 'Clarte complete avant la mise en ligne',
+      subtitle: 'GMX Labs garde les actifs critiques de lancement organises et auditables sur les metadonnees, controles techniques et parcours de conversion.',
+      items: [
+        { icon: 'SEO', title: 'SEO et Decouvrabilite', text: 'URL canonique, Open Graph, cartes Twitter, robots.txt et sitemap.xml sont en place pour le lancement.' },
+        { icon: 'SEC', title: 'Renforcement de la Securite', text: 'Des liens externes securises, les verifications lint/build et la documentation des risques limitent les erreurs evitables en production.' },
+        { icon: 'QA', title: 'Visibilite de Gouvernance', text: 'Les fichiers QA et checklist de lancement sont suivis dans le repo pour une revue claire et traçable.' },
+        { icon: 'UX', title: 'UX orientee conversion', text: 'Les visiteurs choisissent leur parcours: voir les services, reserver sur Calendly ou commencer via checkout Stripe securise.' },
       ],
     },
     process: {
@@ -695,6 +898,29 @@ export const translations: Record<Language, Translation> = {
         { question: 'Combien de temps pour une app Web3 ?', answer: 'Un MVP peut sortir en quelques semaines. Les produits plus larges exigent des phases structurees.' },
         { question: 'Pouvez-vous integrer l IA a la blockchain ?', answer: 'Oui, pour analytics on-chain, monitoring du risque et automatisation des operations.' },
       ],
+      additionalItems: [
+        {
+          question: 'Puis-je reserver une consultation avant de payer ?',
+          answer: 'Oui. Commencez par un appel strategique sur Calendly, puis passez a Stripe une fois le perimetre defini.',
+        },
+        {
+          question: 'Les paiements sont-ils securises ?',
+          answer: 'Oui. Les paiements sont traites via Stripe sur une page de checkout securisee.',
+        },
+        {
+          question: 'Combien de temps dure un projet type ?',
+          answer: 'Cela depend du perimetre. Une landing page ciblee avance vite, tandis que les projets plus larges sont livres par phases.',
+        },
+      ],
+    },
+    pricing: {
+      titleLead: 'Pret a commencer avec',
+      titleAccent: 'checkout securise',
+      titleTail: ' ?',
+      description: 'Utilisez Stripe pour reserver votre slot projet et lancer la livraison.',
+      trust: 'Onboarding rapide. Perimetre clair. Livraison digitale en ligne.',
+      primaryCta: 'Demarrer le projet',
+      secondaryCta: 'Reserver une consultation gratuite',
     },
     cta: {
       titleLead: 'Vous construisez en Web3 ou',
@@ -716,8 +942,11 @@ export const translations: Record<Language, Translation> = {
       description: 'Ingenierie digitale specialisee pour produits Web3 et IA.',
       services: 'Services',
       process: 'Processus',
+      pricing: 'Tarifs',
       faq: 'FAQ',
       contact: 'Contact',
+      bookCalendly: 'Reserver sur Calendly',
+      secureStripeCheckout: 'Checkout Stripe securise',
       copyright: 'Copyright 2026 GMX Labs',
     },
   },
@@ -749,6 +978,11 @@ export const translations: Record<Language, Translation> = {
       trustPoints: ['Entrega com foco em seguranca', 'Arquitetura preparada para auditoria', 'Execucao orientada a producao'],
       primaryCta: 'Agendar call estrategica',
       secondaryCta: 'Solicitar avaliação técnica',
+      viewServicesCta: 'Ver servicos',
+      secureCheckoutCta: 'Comecar com checkout seguro',
+      videoAriaLabel: 'Video de demonstracao Web3',
+      videoFallback: 'Seu navegador nao suporta video.',
+      blockchainLabel: 'Blockchain',
       stackCards: ['Web2', 'Web3', 'IA', 'Blockchain'],
     },
     services: {
@@ -798,6 +1032,43 @@ export const translations: Record<Language, Translation> = {
           ],
           ctaLabel: 'Definir escopo tecnico',
         },
+      ],
+      additionalItems: [
+        {
+          accent: 'service-card-blue',
+          icon: 'S',
+          title: 'SEO e Descoberta',
+          description: 'Ajudamos seu projeto a ser encontrado com base SEO pronta para lancamento e previews sociais confiaveis.',
+          points: ['Alinhamento de metadados canonicos', 'Open Graph e social cards prontos', 'Suporte de validacao de sitemap.xml e robots.txt'],
+          ctaLabel: 'Melhorar visibilidade',
+        },
+        {
+          accent: 'service-card-cyan',
+          icon: 'H',
+          title: 'Endurecimento de Seguranca',
+          description: 'Reduzimos risco de lancamento com configuracao limpa, links externos seguros e verificacoes documentadas.',
+          points: ['Higiene de dependencias e build', 'Revisao de risco de lancamento', 'Consistencia de placeholders runtime e links'],
+          ctaLabel: 'Reduzir risco',
+        },
+        {
+          accent: 'service-card-purple',
+          icon: 'L',
+          title: 'Suporte Tecnico de Lancamento',
+          description: 'Suporte ponta a ponta, do pagamento e agendamento ate a confianca final para ir ao ar.',
+          points: ['Suporte ao fluxo de pagamento Stripe', 'Configuracao de funil com Calendly e contato', 'QA pre-lancamento e governanca de release'],
+          ctaLabel: 'Planejar lancamento',
+        },
+      ],
+    },
+    readiness: {
+      eyebrow: 'Confianca e Prontidao de Lancamento',
+      title: 'Clareza total antes do go-live',
+      subtitle: 'A GMX Labs mantem ativos criticos de lancamento organizados e auditaveis em metadados, checks tecnicos e fluxo de conversao.',
+      items: [
+        { icon: 'SEO', title: 'SEO e Descoberta', text: 'URL canonica, Open Graph, cards do Twitter, robots.txt e sitemap.xml estao presentes para o lancamento.' },
+        { icon: 'SEC', title: 'Endurecimento de Seguranca', text: 'Links externos seguros, checks de lint/build e documentacao de riscos reduzem erros evitaveis em producao.' },
+        { icon: 'QA', title: 'Visibilidade de Governanca', text: 'Arquivos de QA e checklist de lancamento ficam no repositorio para revisao clara e rastreavel.' },
+        { icon: 'UX', title: 'UX focada em conversao', text: 'Visitantes escolhem o caminho ideal: ver servicos, agendar no Calendly ou iniciar no checkout seguro da Stripe.' },
       ],
     },
     process: {
@@ -878,6 +1149,29 @@ export const translations: Record<Language, Translation> = {
         { question: 'Quanto tempo leva um app Web3?', answer: 'Um MVP pode ser lancado em semanas. Produtos maiores exigem fases estruturadas.' },
         { question: 'Vocês integram IA em blockchain?', answer: 'Sim. Implementamos IA para analytics on-chain, monitoramento de risco e automacao operacional.' },
       ],
+      additionalItems: [
+        {
+          question: 'Posso agendar uma consulta antes de pagar?',
+          answer: 'Sim. Comece com uma call estrategica no Calendly e depois avance para Stripe quando o escopo estiver claro.',
+        },
+        {
+          question: 'Os pagamentos sao seguros?',
+          answer: 'Sim. Os pagamentos sao processados pela Stripe em uma pagina de checkout segura.',
+        },
+        {
+          question: 'Quanto tempo leva um projeto tipico?',
+          answer: 'Depende do escopo. Projetos de landing page podem avancar rapido, enquanto escopos maiores sao entregues em fases.',
+        },
+      ],
+    },
+    pricing: {
+      titleLead: 'Pronto para comecar com',
+      titleAccent: 'checkout seguro',
+      titleTail: '?',
+      description: 'Use Stripe para reservar seu slot de projeto e iniciar a entrega.',
+      trust: 'Onboarding rapido. Escopo claro. Entrega digital online.',
+      primaryCta: 'Iniciar projeto',
+      secondaryCta: 'Agendar consulta gratuita',
     },
     cta: {
       titleLead: 'Construindo em Web3 ou',
@@ -899,8 +1193,11 @@ export const translations: Record<Language, Translation> = {
       description: 'Engenharia digital especializada para produtos Web3 e IA.',
       services: 'Servicos',
       process: 'Processo',
+      pricing: 'Precos',
       faq: 'FAQ',
       contact: 'Contato',
+      bookCalendly: 'Agendar no Calendly',
+      secureStripeCheckout: 'Checkout seguro Stripe',
       copyright: 'Copyright 2026 GMX Labs',
     },
   },

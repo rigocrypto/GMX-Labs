@@ -3,8 +3,13 @@ import LanguageSwitcher from './components/LanguageSwitcher'
 import Logo from './components/Logo'
 import { useLanguage } from './hooks/useLanguage'
 
+const CALENDLY_LINK = 'https://calendly.com/rigocrypto'
+const CONTACT_MAILTO = 'mailto:rigovivas71@gmail.com?subject=Project%20Estimate%20Request'
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/7sY7sL0BdakRcERa7SgnK02'
+
 function App() {
   const { language, setLanguage, t } = useLanguage()
+  const services = [...t.services.items, ...t.services.additionalItems]
 
   return (
     <div className="gmx-page">
@@ -32,7 +37,7 @@ function App() {
             label={t.nav.languageSwitcherLabel}
             onChange={setLanguage}
           />
-          <a className="btn nav-cta" href="https://calendly.com/rigocrypto">
+          <a className="btn nav-cta" href={CALENDLY_LINK}>
             {t.nav.cta}
           </a>
         </div>
@@ -47,7 +52,7 @@ function App() {
               {t.hero.titleLead} <span className="accent-text">{t.hero.titleAccent}</span>
             </h1>
 
-            <div className="hero-video-wrap" aria-label="Web3 showcase video">
+            <div className="hero-video-wrap" aria-label={t.hero.videoAriaLabel}>
               <video
                 className="hero-video"
                 src={`${import.meta.env.BASE_URL}Web3-logo.mp4`}
@@ -58,7 +63,7 @@ function App() {
                 controls
                 preload="metadata"
               >
-                Your browser does not support the video tag.
+                {t.hero.videoFallback}
               </video>
             </div>
 
@@ -71,11 +76,19 @@ function App() {
             </ul>
 
             <div className="hero-ctas">
-              <a className="btn btn-primary" href="https://calendly.com/rigocrypto">
+              <a className="btn btn-primary" href={CALENDLY_LINK}>
                 {t.hero.primaryCta}
               </a>
-              <a className="btn btn-secondary" href="mailto:rigovivas71@gmail.com?subject=Technical%20Assessment%20Request">
-                {t.hero.secondaryCta}
+              <a className="btn btn-secondary" href="#services">
+                {t.hero.viewServicesCta}
+              </a>
+              <a
+                className="btn btn-primary"
+                href={STRIPE_PAYMENT_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.hero.secureCheckoutCta}
               </a>
             </div>
             <p className="hero-disclaimer">{t.brand.disclaimer}</p>
@@ -86,7 +99,7 @@ function App() {
             <div className="stack-card stack-web2">{t.hero.stackCards[0]}</div>
             <div className="stack-card stack-web3">{t.hero.stackCards[1]}</div>
             <div className="stack-card stack-ai">{t.hero.stackCards[2]}</div>
-            <div className="stack-card stack-blockchain">{t.hero.stackCards[3] ?? 'Blockchain'}</div>
+            <div className="stack-card stack-blockchain">{t.hero.stackCards[3] ?? t.hero.blockchainLabel}</div>
           </div>
         </section>
 
@@ -96,7 +109,7 @@ function App() {
           <p className="section-subtitle">{t.services.subtitle}</p>
 
           <div className="services-grid">
-            {t.services.items.map((service) => (
+            {services.map((service) => (
               <article className={`service-card ${service.accent}`} key={`${language}-${service.title}`}>
                 <div className="service-icon" aria-hidden="true">
                   {service.icon}
@@ -115,6 +128,23 @@ function App() {
                 >
                   {service.ctaLabel}
                 </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section reveal" id="readiness">
+          <p className="section-eyebrow">{t.readiness.eyebrow}</p>
+          <h2>{t.readiness.title}</h2>
+          <p className="section-subtitle">{t.readiness.subtitle}</p>
+          <div className="why-grid">
+            {t.readiness.items.map((item) => (
+              <article className="why-card" key={`${language}-${item.title}`}>
+                <div className="why-icon" aria-hidden="true">
+                  {item.icon}
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
               </article>
             ))}
           </div>
@@ -219,6 +249,31 @@ function App() {
                 <p>{item.answer}</p>
               </details>
             ))}
+            {t.faq.additionalItems.map((item) => (
+              <details className="faq-item" key={`${language}-${item.question}`}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section className="cta-section reveal" id="pricing">
+          <div className="cta-copy">
+            <h2>
+              {t.pricing.titleLead} <span className="accent-text">{t.pricing.titleAccent}</span>
+              {t.pricing.titleTail}
+            </h2>
+            <p>{t.pricing.description}</p>
+            <p className="cta-trust">{t.pricing.trust}</p>
+            <div className="cta-actions">
+              <a className="btn btn-primary" href={STRIPE_PAYMENT_LINK} target="_blank" rel="noopener noreferrer">
+                {t.pricing.primaryCta}
+              </a>
+              <a className="btn btn-secondary" href={CALENDLY_LINK}>
+                {t.pricing.secondaryCta}
+              </a>
+            </div>
           </div>
         </section>
 
@@ -231,13 +286,13 @@ function App() {
             <p>{t.cta.description}</p>
             <p className="cta-trust">{t.cta.trust}</p>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="https://calendly.com/rigocrypto">
+              <a className="btn btn-primary" href={CALENDLY_LINK}>
                 {t.cta.primaryCta}
               </a>
-              <a className="btn btn-secondary" href="mailto:rigovivas71@gmail.com?subject=Project%20Estimate%20Request">
+              <a className="btn btn-secondary" href={CONTACT_MAILTO}>
                 {t.cta.secondaryCta}
               </a>
-              <a className="btn btn-primary" href="https://buy.stripe.com/7sY7sL0BdakRcERa7SgnK02" target="_blank" rel="noopener noreferrer">
+              <a className="btn btn-primary" href={STRIPE_PAYMENT_LINK} target="_blank" rel="noopener noreferrer">
                 {t.cta.payCta}
               </a>
             </div>
@@ -262,11 +317,18 @@ function App() {
         <div className="footer-links">
           <a href="#services">{t.footer.services}</a>
           <a href="#process">{t.footer.process}</a>
+          <a href="#pricing">{t.footer.pricing}</a>
           <a href="#faq">{t.footer.faq}</a>
           <a href="#contact">{t.footer.contact}</a>
         </div>
         <div>
           <a href="mailto:rigovivas71@gmail.com">rigovivas71@gmail.com</a>
+          <p>
+            <a href={CALENDLY_LINK}>{t.footer.bookCalendly}</a> |{' '}
+            <a href={STRIPE_PAYMENT_LINK} target="_blank" rel="noopener noreferrer">
+              {t.footer.secureStripeCheckout}
+            </a>
+          </p>
           <p className="footer-disclaimer">{t.brand.disclaimer}</p>
           <p>{t.footer.copyright}</p>
         </div>
