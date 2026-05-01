@@ -1,47 +1,52 @@
 # GMX Labs Launch Checklist
 
 Launch status model used in this file:
-- Done
+- Pass
 - Needs Fix
 - Blocked
 - Not Applicable
 
 Audit date: 2026-05-01
+Production smoke-test date: 2026-05-01
+Commit verified: 135128df204328f705acffdd333fe742d646232b
 Current release decision: Soft No-Go
 
 ## 1. Replace Placeholder Values
-- Done: Site URL placeholder replacement in runtime files.
-- Done: OG image URL placeholder replacement in runtime files.
-- Done: Contact email placeholder replacement in runtime files.
-- Done: Phone placeholder replacement in runtime files.
-- Done: Social links in JSON-LD are real profiles.
-- Done: Twitter handle in metadata is set.
-- Needs Fix: Calendly links require production click validation.
+- Pass: Site URL placeholder replacement in runtime files.
+- Pass: OG image URL placeholder replacement in runtime files.
+- Pass: Contact email placeholder replacement in runtime files.
+- Pass: Phone placeholder replacement in runtime files.
+- Pass: Social links in JSON-LD are real profiles.
+- Pass: Twitter handle in metadata is set.
+- Pass: Calendly links present — https://calendly.com/rigocrypto (click-through: manual validation needed).
+- Pass: Stripe links present — https://buy.stripe.com/7sY7sL0BdakRcERa7SgnK02 (checkout flow: manual validation needed).
 
 ## 2. OG Preview Asset
-- Done: File exists at public/og/gmx-labs-preview.jpg.
-- Needs Fix: Confirm dimensions are exactly 1200 x 630.
-- Blocked: Confirm asset opens on deployed production URL.
+- Pass: File exists at public/og/gmx-labs-preview.jpg.
+- Pass: Asset is accessible at https://rigocrypto.github.io/GMX-Labs/og/gmx-labs-preview.jpg (HTTP 200).
+- Blocked: Confirm dimensions are exactly 1200 x 630.
 
 ## 3. Domain + Metadata Validation
-- Done: title is present and branded in source.
-- Done: meta description is present in source.
-- Done: canonical is set in source.
-- Done: og:url is set in source.
-- Done: og:image is set in source.
-- Done: twitter:image is set in source.
-- Blocked: Validate these values in deployed page source.
+- Pass: title present in source — "GMX Labs | DeFi Development Agency, Web3 Development Company, AI Automation".
+- Pass: meta description present in source.
+- Pass: canonical set and matches live URL — https://rigocrypto.github.io/GMX-Labs/.
+- Pass: og:url set and matches live URL.
+- Pass: og:image set and asset confirmed accessible.
+- Pass: twitter:image set and asset confirmed accessible.
+- Pass: twitter:card = summary_large_image.
+- Pass: JSON-LD ProfessionalService schema present.
+- Pass: robots meta = index, follow.
 
 ## 4. robots + Sitemap Validation
-- Done: robots.txt file exists and includes sitemap URL.
-- Done: sitemap.xml file exists and contains loc.
-- Blocked: Verify /robots.txt returns 200 on deployed URL.
-- Blocked: Verify /sitemap.xml returns 200 on deployed URL.
-- Blocked: Confirm deployed sitemap loc matches final live domain.
+- Pass: robots.txt file exists and includes sitemap URL.
+- Pass: sitemap.xml file exists and contains loc.
+- Pass: /robots.txt returns 200 on live URL — content confirmed correct with sitemap reference.
+- Pass: /sitemap.xml returns 200 on live URL — valid XML, loc matches https://rigocrypto.github.io/GMX-Labs/.
+- Pass: Deployed sitemap loc matches final live domain.
 
 ## 5. Functional QA
 - Blocked: Test all nav anchor links manually in browser.
-- Blocked: Test CTA buttons (email, Calendly, purchase links) in deployed environment.
+- Blocked: Test CTA buttons (Calendly, Stripe checkout, email) in deployed environment — links confirmed present; click-through not yet validated.
 - Blocked: Test footer links manually.
 - Blocked: Confirm no broken routes/assets via devtools network tab.
 
@@ -52,11 +57,11 @@ Current release decision: Soft No-Go
 - Blocked: Test at least one Chromium browser and one WebKit browser.
 
 ## 7. Accessibility + SEO QA
-- Needs Fix: Confirm exactly one H1 in final rendered page.
-- Needs Fix: Confirm logical H2/H3 hierarchy in rendered page.
-- Needs Fix: Confirm meaningful alt text coverage for major images/logo.
+- Blocked: Confirm exactly one H1 in final rendered page.
+- Blocked: Confirm logical H2/H3 hierarchy in rendered page.
+- Blocked: Confirm meaningful alt text coverage for major images/logo.
 - Blocked: Verify keyboard focus visibility manually.
-- Done: Language and viewport tags are present in source.
+- Pass: Language and viewport tags are present in source.
 
 ## 8. Performance QA
 - Blocked: Lighthouse Performance target 90+ on production URL.
@@ -78,14 +83,14 @@ Current release decision: Soft No-Go
 Decision: Soft No-Go
 
 Reason:
-- Manual QA is incomplete.
-- Production smoke testing is incomplete.
-- Lighthouse/performance checks are incomplete.
-- Checklist sign-off is not fully complete.
+- Live page loads correctly. All automated and remote smoke-test checks pass.
+- CTA links (Calendly, Stripe, Email), robots.txt, sitemap.xml, OG image, and metadata all confirmed live.
+- Remaining blockers: Lighthouse scores, mobile/device layout, language switching functionality, CTA click-through flow, and Stripe checkout end-to-end are not yet manually validated.
 
 Exit criteria to change decision to Go:
-1. Deploy production candidate URL.
-2. Complete manual functional/mobile/browser smoke test and record results.
-3. Run Lighthouse on production URL and meet targets.
-4. Re-check links, robots, sitemap, OG preview, canonical values on live site.
-5. Update this checklist and QA_REPORT.md with completed evidence.
+1. Execute manual functional/mobile/browser smoke test in live environment.
+2. Verify language switching works in live browser (EN→ES→FR→PT).
+3. Click-test all CTAs: Calendly booking page loads, Stripe checkout opens, email client opens.
+4. Run Lighthouse on production URL and confirm all targets met.
+5. Confirm OG image is 1200x630.
+6. Update this checklist and QA_REPORT.md with completed evidence.
