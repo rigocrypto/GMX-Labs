@@ -237,6 +237,9 @@ function App() {
               <a className="btn btn-secondary" href="mailto:rigovivas71@gmail.com?subject=Project%20Estimate%20Request">
                 {t.cta.secondaryCta}
               </a>
+              <a className="btn btn-primary" href="https://buy.stripe.com/7sY7sL0BdakRcERa7SgnK02" target="_blank" rel="noopener noreferrer">
+                {t.cta.payCta}
+              </a>
             </div>
           </div>
 

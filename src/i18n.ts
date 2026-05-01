@@ -142,6 +142,7 @@ type Translation = {
     trust: string
     primaryCta: string
     secondaryCta: string
+    payCta: string
     statsAriaLabel: string
     stats: StatItem[]
   }
@@ -337,6 +338,7 @@ export const translations: Record<Language, Translation> = {
       trust: 'Technical support for founders, CTOs, and product teams shipping high-stakes systems.',
       primaryCta: 'Book Strategy Call',
       secondaryCta: 'Get Project Estimate',
+      payCta: 'Start Your Project',
       statsAriaLabel: 'Company stats',
       stats: [
         { value: '50+', label: 'Projects Delivered' },
@@ -519,6 +521,7 @@ export const translations: Record<Language, Translation> = {
       trust: 'Soporte tecnico para fundadores, CTOs y equipos de producto.',
       primaryCta: 'Reservar llamada estrategica',
       secondaryCta: 'Solicitar estimacion',
+      payCta: 'Iniciar proyecto',
       statsAriaLabel: 'Metricas de la compania',
       stats: [
         { value: '50+', label: 'Proyectos entregados' },
@@ -701,6 +704,7 @@ export const translations: Record<Language, Translation> = {
       trust: 'Support technique pour fondateurs, CTOs et equipes produit.',
       primaryCta: 'Reserver un appel strategique',
       secondaryCta: 'Demander une estimation',
+      payCta: 'Démarrer le projet',
       statsAriaLabel: 'Indicateurs entreprise',
       stats: [
         { value: '50+', label: 'Projets livres' },
@@ -883,6 +887,7 @@ export const translations: Record<Language, Translation> = {
       trust: 'Suporte tecnico para fundadores, CTOs e times de produto.',
       primaryCta: 'Agendar call estrategica',
       secondaryCta: 'Solicitar estimativa',
+      payCta: 'Iniciar projeto',
       statsAriaLabel: 'Metricas da empresa',
       stats: [
         { value: '50+', label: 'Projetos entregues' },
