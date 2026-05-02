@@ -110,6 +110,15 @@ function App() {
         </section>
 
         <section className="section reveal" id="web2web3">
+          <video
+            className="web2web3-video"
+            src="/GMX-Labs/Video1.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+          />
           <p className="section-eyebrow">{t.web2web3.eyebrow}</p>
           <h2>{t.web2web3.title}</h2>
           <p className="section-subtitle">{t.web2web3.description}</p>

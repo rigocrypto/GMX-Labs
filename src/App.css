@@ -640,6 +640,15 @@ h1 {
   border-color: rgba(155, 113, 255, 0.58);
 }
 
+.web2web3-video {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 0.72rem;
+  margin-bottom: 1.4rem;
+  display: block;
+}
+
 .industries-note {
   text-align: center;
 }
