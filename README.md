@@ -189,6 +189,8 @@ GMX-Labs uses Dependabot, npm audit, and CodeQL code scanning to monitor depende
 | **Stripe** | [`https://buy.stripe.com/7sY7sL0BdakRcERa7SgnK02`](https://buy.stripe.com/7sY7sL0BdakRcERa7SgnK02) | Secure payment entry point for digital services |
 | **Calendly** | [`https://calendly.com/rigocrypto`](https://calendly.com/rigocrypto) | Book consultation and strategy call |
 | **Email** | `rigovivas71@gmail.com` | Direct contact for custom project inquiries |
+| **Phone** | `+1-689-216-5223` | Direct phone contact |
+| **WhatsApp** | [`https://wa.me/16892165223`](https://wa.me/16892165223) | Chat on WhatsApp |
 
 ---
 

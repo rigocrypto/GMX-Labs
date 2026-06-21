@@ -1,11 +1,15 @@
 import './App.css'
 import LanguageSwitcher from './components/LanguageSwitcher'
+import LeadCapturePopup from './components/LeadCapturePopup'
 import Logo from './components/Logo'
 import { useLanguage } from './hooks/useLanguage'
 
 const CALENDLY_LINK = 'https://calendly.com/rigocrypto'
 const CONTACT_MAILTO = 'mailto:rigovivas71@gmail.com?subject=Project%20Estimate%20Request'
 const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/7sY7sL0BdakRcERa7SgnK02'
+const WHATSAPP_LINK = 'https://wa.me/16892165223'
+const PHONE_LINK = 'tel:+16892165223'
+const PHONE_DISPLAY = '+1-689-216-5223'
 
 function App() {
   const { language, setLanguage, t } = useLanguage()
@@ -317,6 +321,15 @@ function App() {
               <a className="btn btn-primary" href={STRIPE_PAYMENT_LINK} target="_blank" rel="noopener noreferrer">
                 {t.cta.payCta}
               </a>
+              <a
+                className="btn btn-secondary"
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat with GMX Labs on WhatsApp"
+              >
+                Chat on WhatsApp
+              </a>
             </div>
           </div>
 
@@ -330,6 +343,8 @@ function App() {
           </div>
         </section>
       </main>
+
+      <LeadCapturePopup />
 
       <footer className="gmx-footer">
         <div>
@@ -345,6 +360,13 @@ function App() {
         </div>
         <div>
           <a href="mailto:rigovivas71@gmail.com">rigovivas71@gmail.com</a>
+          <p>
+            <a href={PHONE_LINK} aria-label="Call GMX Labs">{PHONE_DISPLAY}</a>
+            {' | '}
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat with GMX Labs on WhatsApp">
+              Chat on WhatsApp
+            </a>
+          </p>
           <p>
             <a href={CALENDLY_LINK}>{t.footer.bookCalendly}</a> |{' '}
             <a href={STRIPE_PAYMENT_LINK} target="_blank" rel="noopener noreferrer">
