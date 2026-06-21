@@ -1,0 +1,306 @@
+/* ── Floating CTA button ── */
+.gmx-floating-cta {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9998;
+  border: 1px solid rgba(80, 180, 255, 0.6);
+  background: linear-gradient(135deg, #0ea5ff, #7c3aed);
+  color: #ffffff;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 28px rgba(14, 165, 255, 0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gmx-floating-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(14, 165, 255, 0.65);
+}
+
+/* ── Backdrop ── */
+.gmx-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.82);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  animation: gmx-fade-in 0.2s ease;
+}
+
+@keyframes gmx-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Modal panel ── */
+.gmx-popup {
+  position: relative;
+  width: min(920px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(125, 211, 252, 0.35);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 255, 0.22), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.25), transparent 32%),
+    rgba(3, 7, 18, 0.96);
+  color: #ffffff;
+  padding: 36px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  animation: gmx-slide-up 0.25s ease;
+}
+
+@keyframes gmx-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.gmx-popup h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  padding-right: 36px;
+}
+
+.gmx-popup-subtitle {
+  margin: 0 0 28px;
+  color: #cbd5e1;
+  line-height: 1.65;
+  font-size: 0.97rem;
+}
+
+/* ── Close button ── */
+.gmx-popup-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.8);
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.gmx-popup-close:hover {
+  background: rgba(56, 189, 248, 0.25);
+}
+
+/* ── Form layout ── */
+.gmx-lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gmx-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.gmx-lead-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ── Inputs, selects, textarea ── */
+.gmx-lead-form input,
+.gmx-lead-form select,
+.gmx-lead-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #ffffff;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.gmx-lead-form select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.gmx-lead-form select option {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.gmx-lead-form input:focus,
+.gmx-lead-form select:focus,
+.gmx-lead-form textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+}
+
+.gmx-lead-form input::placeholder,
+.gmx-lead-form textarea::placeholder {
+  color: #475569;
+}
+
+.gmx-lead-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* ── File upload hint ── */
+.gmx-file-note {
+  color: #94a3b8;
+  font-size: 0.78rem;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* ── Action row ── */
+.gmx-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+/* ── Buttons ── */
+.gmx-primary-btn,
+.gmx-secondary-btn {
+  border-radius: 999px;
+  padding: 13px 24px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  font-family: inherit;
+}
+
+.gmx-primary-btn {
+  border: 0;
+  background: linear-gradient(135deg, #0ea5ff, #7c3aed);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(14, 165, 255, 0.35);
+}
+
+.gmx-primary-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.gmx-secondary-btn {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.8);
+  color: #e2e8f0;
+}
+
+.gmx-secondary-btn:hover {
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+/* ── Success state ── */
+.gmx-success {
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.gmx-success h2 {
+  padding-right: 0;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.gmx-success p {
+  color: #cbd5e1;
+  line-height: 1.65;
+  margin-bottom: 28px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gmx-success-note {
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+  background: rgba(14, 165, 255, 0.08);
+  color: #7dd3fc;
+  font-size: 0.88rem;
+  padding: 10px 16px;
+  margin-bottom: 20px !important;
+}
+
+/* ── Submission error ── */
+.gmx-submit-error {
+  border: 1px solid rgba(248, 113, 113, 0.5);
+  border-radius: 10px;
+  background: rgba(127, 29, 29, 0.35);
+  color: #fca5a5;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Privacy consent line ── */
+.gmx-privacy-note {
+  color: #64748b;
+  font-size: 0.77rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  .gmx-popup {
+    padding: 24px 18px;
+    border-radius: 20px;
+    max-height: 95vh;
+  }
+
+  .gmx-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gmx-actions {
+    flex-direction: column-reverse;
+  }
+
+  .gmx-primary-btn,
+  .gmx-secondary-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .gmx-floating-cta {
+    right: 14px;
+    bottom: 14px;
+    padding: 12px 18px;
+    font-size: 0.88rem;
+  }
+}
