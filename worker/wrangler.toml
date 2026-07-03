@@ -16,8 +16,8 @@ ALLOWED_ORIGIN = "https://rigocrypto.github.io"
 #   wrangler kv namespace create REPO_INSPECTION_LEADS --preview
 [[kv_namespaces]]
 binding = "REPO_INSPECTION_LEADS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
-preview_id = "REPLACE_WITH_PREVIEW_KV_NAMESPACE_ID"
+id = "5c2717966c4d43f6baee48c8ed543efe"
+preview_id = "a2383bac065841a4a813ad6119e12df3"
 
 # ── Secrets (DO NOT put values here — for reference only) ─────────────────────
 # Set each with: wrangler secret put <NAME>
