@@ -1,0 +1,70 @@
+name: Deploy Repo Inspection Worker
+
+# Deploys the Cloudflare Worker under worker/. Runs tests + typecheck first, then
+# deploys ONLY when the Cloudflare credentials are present as GitHub secrets.
+#
+# Required GitHub repository secrets (Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN   — token with "Edit Cloudflare Workers" permission for
+#                            the target account (minimal scope: Workers Scripts:Edit,
+#                            Workers KV Storage:Edit, Account Settings:Read).
+#   CLOUDFLARE_ACCOUNT_ID  — the Cloudflare account id that owns the Worker.
+#
+# Backend runtime secrets (STRIPE_*, TWILIO_*, GMX_LABS_WHATSAPP_TO) are NOT set
+# here — they live only in Cloudflare Worker secrets (`wrangler secret put`).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "worker/**"
+      - ".github/workflows/deploy-repo-inspection-worker.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-repo-inspection-worker
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: worker
+    # Expose secret-presence as a plain env flag — secrets can't be read directly
+    # in step-level `if:` conditions, so we gate on this instead.
+    env:
+      HAS_CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: worker/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test
+        run: npm test
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Deploy to Cloudflare Workers
+        if: ${{ env.HAS_CLOUDFLARE_TOKEN == 'true' }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npm run deploy
+
+      - name: Deploy skipped (credentials not set)
+        if: ${{ env.HAS_CLOUDFLARE_TOKEN != 'true' }}
+        run: |
+          echo "::warning title=Worker deploy skipped::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID are not set. Tests and typecheck ran. To enable deploys: (1) add both repo secrets, (2) create the KV namespace and paste its id/preview_id into worker/wrangler.toml, then re-run this workflow."
