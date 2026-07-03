@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import './App.css'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import LeadCapturePopup from './components/LeadCapturePopup'
 import Logo from './components/Logo'
+import RepoInspectionCTA from './components/RepoInspectionCTA'
+import RepoInspectionModal from './components/RepoInspectionModal'
 import { useLanguage } from './hooks/useLanguage'
 
 const CALENDLY_LINK = 'https://calendly.com/rigocrypto'
@@ -14,6 +17,7 @@ const PHONE_DISPLAY = '+1-689-216-5223'
 function App() {
   const { language, setLanguage, t } = useLanguage()
   const services = [...t.services.items, ...t.services.additionalItems]
+  const [repoModalOpen, setRepoModalOpen] = useState(false)
 
   return (
     <div className="gmx-page">
@@ -48,6 +52,8 @@ function App() {
       </header>
 
       <main id="top" className="gmx-main">
+        <RepoInspectionCTA onRequestInspection={() => setRepoModalOpen(true)} />
+
         <section className="hero-section reveal" id="solutions">
           <div className="hero-copy-col">
             <p className="eyebrow-pill">{t.hero.eyebrow}</p>
@@ -343,6 +349,8 @@ function App() {
           </div>
         </section>
       </main>
+
+      {repoModalOpen && <RepoInspectionModal onClose={() => setRepoModalOpen(false)} />}
 
       <LeadCapturePopup />
 

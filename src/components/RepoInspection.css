@@ -1,0 +1,439 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Repository Security Checkup — CTA section + modal
+   Reuses the global design tokens (--purple, --blue, --line, …) defined in
+   App.css / index.css so it reads as part of the existing GMX-Labs system.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Top-of-page CTA ── */
+.repo-cta {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(143, 88, 255, 0.4);
+  border-radius: 0.88rem;
+  padding: clamp(1.4rem, 3.4vw, 2.4rem);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(143, 88, 255, 0.22), transparent 40%),
+    radial-gradient(circle at 92% 12%, rgba(31, 214, 191, 0.16), transparent 42%),
+    linear-gradient(165deg, rgba(12, 18, 52, 0.94), rgba(7, 11, 33, 0.96));
+  box-shadow: 0 18px 44px rgba(11, 18, 56, 0.5);
+}
+
+.repo-cta-badge {
+  width: fit-content;
+  margin: 0 0 0.85rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(143, 88, 255, 0.55);
+  background: rgba(143, 88, 255, 0.16);
+  color: #d6c7ff;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.repo-cta-headline {
+  font-size: clamp(1.7rem, 4.4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+}
+
+.repo-cta-subhead {
+  margin: 0.9rem 0 0;
+  max-width: 64ch;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.repo-cta-lead {
+  margin: 0.7rem 0 0;
+  max-width: 64ch;
+  color: #c9d5ff;
+  font-weight: 600;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.repo-cta-points {
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+}
+
+.repo-cta-points li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: #c6d2f7;
+  font-size: 0.88rem;
+}
+
+.repo-cta-points li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--cyan);
+  font-weight: 800;
+}
+
+.repo-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1rem;
+  margin-top: 1.3rem;
+}
+
+.repo-cta-primary {
+  cursor: pointer;
+  border: 0;
+  font-size: 0.98rem;
+}
+
+.repo-cta-secondary {
+  color: var(--muted);
+  font-size: 0.85rem;
+  max-width: 40ch;
+}
+
+/* ── Modal backdrop ── */
+.repo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.84);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  animation: repo-fade-in 0.2s ease;
+}
+
+@keyframes repo-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Modal panel ── */
+.repo-modal {
+  position: relative;
+  width: min(820px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  border: 1px solid rgba(143, 88, 255, 0.4);
+  border-radius: 22px;
+  padding: 34px;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(79, 124, 255, 0.2), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(143, 88, 255, 0.24), transparent 34%),
+    rgba(4, 8, 22, 0.97);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  animation: repo-slide-up 0.25s ease;
+}
+
+@keyframes repo-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.repo-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.8);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.repo-modal-close:hover {
+  background: rgba(143, 88, 255, 0.3);
+}
+
+.repo-modal-title {
+  margin: 0 0 10px;
+  padding-right: 40px;
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.repo-modal-desc {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ── Deliverables ── */
+.repo-deliverables {
+  margin-bottom: 22px;
+  border: 1px solid rgba(112, 131, 245, 0.28);
+  border-radius: 14px;
+  background: rgba(9, 16, 46, 0.55);
+  padding: 16px 18px;
+}
+
+.repo-deliverables-label {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #79b5ff;
+}
+
+.repo-deliverables ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 18px;
+}
+
+.repo-deliverables li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: #c6d2f7;
+  font-size: 0.86rem;
+}
+
+.repo-deliverables li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--purple);
+  font-weight: 800;
+}
+
+/* ── Form ── */
+.repo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.repo-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.repo-form input,
+.repo-form select,
+.repo-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #fff;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.repo-form select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.repo-form select option {
+  background: #0f172a;
+  color: #fff;
+}
+
+.repo-form input:focus,
+.repo-form select:focus,
+.repo-form textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(143, 88, 255, 0.2);
+}
+
+.repo-form input[aria-invalid="true"] {
+  border-color: rgba(248, 113, 113, 0.7);
+}
+
+.repo-form input::placeholder,
+.repo-form textarea::placeholder {
+  color: #475569;
+}
+
+.repo-form textarea {
+  resize: vertical;
+  min-height: 92px;
+}
+
+.repo-field-hint {
+  color: #94a3b8;
+  font-size: 0.76rem;
+  font-weight: 400;
+}
+
+.repo-field-error {
+  color: #fca5a5;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* ── Consent ── */
+.repo-consent {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 10px !important;
+  font-weight: 500 !important;
+  color: #cbd5e1 !important;
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+.repo-consent input {
+  width: auto;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--purple);
+}
+
+.repo-security-note {
+  margin: 0;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 10px;
+  background: rgba(120, 53, 15, 0.22);
+  color: #fcd9a0;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* ── Actions ── */
+.repo-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.repo-actions .btn,
+.repo-payment-back {
+  cursor: pointer;
+  border: 1px solid rgba(130, 150, 236, 0.34);
+}
+
+.repo-actions .btn-primary {
+  border: 0;
+}
+
+.repo-actions .btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/* ── Payment stage ── */
+.repo-payment {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.repo-payment-note {
+  margin: 0;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 10px;
+  background: rgba(120, 53, 15, 0.22);
+  color: #fcd9a0;
+  padding: 12px 16px;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.repo-payment-ok {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(14, 165, 255, 0.1);
+  color: #9fd8ff;
+}
+
+.repo-payment-note code {
+  font-size: 0.82em;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+
+.repo-buy-button {
+  display: flex;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.repo-payment-back {
+  align-self: center;
+  cursor: pointer;
+}
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  .repo-modal {
+    padding: 24px 18px;
+    border-radius: 18px;
+    max-height: 95vh;
+  }
+
+  .repo-grid,
+  .repo-deliverables ul {
+    grid-template-columns: 1fr;
+  }
+
+  .repo-actions {
+    flex-direction: column-reverse;
+  }
+
+  .repo-actions .btn {
+    width: 100%;
+  }
+
+  .repo-cta-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .repo-cta-primary {
+    width: 100%;
+  }
+}
