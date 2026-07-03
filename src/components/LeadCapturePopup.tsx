@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { STORAGE_BUCKET, supabase } from "../lib/supabaseClient";
 import "./LeadCapturePopup.css";
 
@@ -185,6 +185,16 @@ export default function LeadCapturePopup() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [hasAutoTriggered]);
 
+  // Stable so the focus-trap effect below only re-runs when `isOpen` changes
+  // (not on every render, which would repeatedly steal focus). Declared before
+  // the effect that uses it.
+  const closePopup = useCallback(() => {
+    localStorage.setItem(CLOSED_KEY, String(Date.now()));
+    setIsOpen(false);
+    // Return focus to the floating button so keyboard users aren't stranded.
+    requestAnimationFrame(() => floatingBtnRef.current?.focus());
+  }, []);
+
   // ── Focus trap + ESC close ────────────────────────────────────────────────
   useEffect(() => {
     if (!isOpen) return;
@@ -211,17 +221,9 @@ export default function LeadCapturePopup() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, closePopup]);
 
   // ── Handlers ──────────────────────────────────────────────────────────────
-
-  const closePopup = () => {
-    localStorage.setItem(CLOSED_KEY, String(Date.now()));
-    setIsOpen(false);
-    // Return focus to the floating button so keyboard users aren't stranded.
-    requestAnimationFrame(() => floatingBtnRef.current?.focus());
-  };
 
   // IMPORTANT: openManually intentionally skips all localStorage suppression
   // checks. A returning client who already submitted once must still be able

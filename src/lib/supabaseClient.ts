@@ -26,10 +26,15 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn(
-    "[GMX Labs] Supabase env vars are not set. File uploads will be skipped. " +
-      "Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env.local."
-  );
+  // Uploads are optional — when the env vars are absent, `supabase` stays null
+  // and file uploads are simply skipped. Only surface the hint in development so
+  // production consoles stay clean.
+  if (import.meta.env.DEV) {
+    console.warn(
+      "[GMX Labs] Supabase env vars are not set. File uploads will be skipped. " +
+        "Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env.local."
+    );
+  }
 }
 
 export const supabase =
