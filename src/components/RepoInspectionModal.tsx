@@ -412,10 +412,10 @@ export default function RepoInspectionModal({ onClose }: RepoInspectionModalProp
           <div className="repo-payment">
             {stage === "frontend-only" && (
               <p className="repo-payment-note">
-                Payment is available, but automatic WhatsApp notification requires
-                backend webhook deployment. Running in <strong>frontend-only mode</strong>
-                &nbsp;— your details were captured client-side; GMX-Labs will follow up
-                after payment.
+                Payment is available. Automatic backend notifications are still
+                being deployed. After completing payment, GMX-Labs will follow up
+                manually — please make sure your checkout email is correct and keep
+                your repository link ready for the inspection request.
               </p>
             )}
             {stage === "lead-ready" && (
