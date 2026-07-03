@@ -100,6 +100,8 @@ export type RepoInspectionLead = {
   message: string;
   urgency: "Standard" | "Priority";
   consent: boolean;
+  // Identifies these leads on the backend; matches the Worker's expected `source`.
+  source: "gmx-labs-repo-inspection";
   submittedAt: string;
   sourcePage: string;
 };

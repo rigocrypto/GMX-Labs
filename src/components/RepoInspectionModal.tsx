@@ -198,6 +198,7 @@ export default function RepoInspectionModal({ onClose }: RepoInspectionModalProp
       message: form.message.trim(),
       urgency: form.urgency,
       consent: form.consent,
+      source: "gmx-labs-repo-inspection",
       submittedAt: new Date().toISOString(),
       sourcePage: window.location.href,
     };

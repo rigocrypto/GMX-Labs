@@ -1,0 +1,24 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Local development secrets for `wrangler dev`.
+# Copy this file to `.dev.vars` and fill in real values. NEVER commit `.dev.vars`.
+# In production these are set with `wrangler secret put <NAME>` instead.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Stripe secret key — reserved for future Stripe API calls. Not used by the
+# current webhook flow (which trusts the signature-verified event payload).
+STRIPE_SECRET_KEY=sk_test_replace_me
+
+# Stripe webhook signing secret (Dashboard → Developers → Webhooks → your endpoint).
+# REQUIRED — used to verify the Stripe-Signature header on /stripe-webhook.
+STRIPE_WEBHOOK_SECRET=whsec_replace_me
+
+# Twilio credentials — server-side only.
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=replace_me
+# Twilio WhatsApp sender (sandbox default shown). Include the `whatsapp:` prefix.
+TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+# GMX-Labs destination number that receives the paid-lead alert.
+GMX_LABS_WHATSAPP_TO=whatsapp:+16892165223
+
+# CORS: the only browser origin allowed to call /repo-inspection-leads.
+ALLOWED_ORIGIN=https://rigocrypto.github.io

@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# GMX-Labs Repository Security Checkup — Cloudflare Worker config
+# ─────────────────────────────────────────────────────────────────────────────
+name = "gmx-labs-repo-inspection"
+main = "src/index.ts"
+compatibility_date = "2025-06-01"
+
+# Non-secret build-time var. Secrets are NEVER placed here — set them with
+# `wrangler secret put <NAME>` (production) or in `.dev.vars` (local only).
+[vars]
+ALLOWED_ORIGIN = "https://rigocrypto.github.io"
+
+# KV namespace that stores lead records under key `repo-inspection-lead:{leadId}`.
+# Create it once, then paste the returned ids below:
+#   wrangler kv namespace create REPO_INSPECTION_LEADS
+#   wrangler kv namespace create REPO_INSPECTION_LEADS --preview
+[[kv_namespaces]]
+binding = "REPO_INSPECTION_LEADS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_PREVIEW_KV_NAMESPACE_ID"
+
+# ── Secrets (DO NOT put values here — for reference only) ─────────────────────
+# Set each with: wrangler secret put <NAME>
+#   STRIPE_SECRET_KEY        (sk_live_… / sk_test_…) — reserved; current flow
+#                             verifies via webhook signature and does not call
+#                             the Stripe API, but keep it set for future use.
+#   STRIPE_WEBHOOK_SECRET    (whsec_…) — REQUIRED to verify webhook signatures.
+#   TWILIO_ACCOUNT_SID
+#   TWILIO_AUTH_TOKEN
+#   TWILIO_WHATSAPP_FROM     e.g. "whatsapp:+14155238886"
+#   GMX_LABS_WHATSAPP_TO     e.g. "whatsapp:+16892165223"
